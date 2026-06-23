@@ -283,7 +283,14 @@ fancybox:
 # 条目为完整 HTML 字符串（<link> / <script> / <style> 等均可）
 inject:
   head:
-    # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
-    # - <script src="/js/xxx.js"></script>
+    - |
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VF8SSPQSM"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0VF8SSPQSM');
+      </script>
   bottom:
     # - <script src="/js/xxx.js" defer></script>
