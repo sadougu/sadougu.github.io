@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: sadougu
-subtitle: 'personal site'
-description: 'sadougu 的个人网站，基于 Hexo 构建。'
-keywords: sadougu, blog, hexo
+title: 新加坡省钱速报
+subtitle: '在新加坡，把钱省明白'
+description: '专注新加坡本地省钱资讯，会员权益、消费返现与生活优惠攻略。'
+keywords: 新加坡, 省钱, 优惠, 会员权益, 生活攻略
 author: sadougu
 language: zh-CN
 timezone: 'Asia/Shanghai'
