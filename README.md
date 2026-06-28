@@ -71,10 +71,6 @@ Grok 会自动执行以下步骤：
 根据迄今为止的内容更新 README，并发布到 GitHub
 ```
 
-```
-更新 FlatPaper 主题到最新版，并推送
-```
-
 ### 文章格式参考
 
 ```markdown
@@ -131,40 +127,6 @@ npm run build
 
 生成的静态文件输出到 `public/` 目录（已加入 `.gitignore`，不提交到仓库）。
 
-## 更新 FlatPaper 主题
-
-主题以 vendored 方式存放在 `themes/flatpaper/`（非 git submodule）。更新步骤：
-
-```bash
-# 拉取最新主题
-git clone --depth 1 https://github.com/Homulilly/hexo-theme-flatpaper.git /tmp/flatpaper-latest
-
-# 替换本地主题
-rm -rf themes/flatpaper
-cp -a /tmp/flatpaper-latest themes/flatpaper
-rm -rf themes/flatpaper/.git
-
-# 验证构建
-npm run build
-
-# 提交推送
-git add themes/flatpaper _config.flatpaper.yml
-git commit -m "Update FlatPaper theme"
-git push
-```
-
-站点个性化配置保留在根目录 `_config.flatpaper.yml`，更新主题后对照上游 `_config.yml` 检查是否有新增配置项。
-
-### 近期主题更新亮点（2026-06-28）
-
-- 文章顶图（`top_img`）与暗色模式渐变优化
-- 首页 Hero 贴纸 CTA 按钮可自定义
-- Lucide 全量图标 + Font Awesome 6 支持
-- 背景特效（网格 / 横线 / 点阵等）
-- Friend-Circle-Lite 朋友圈兼容
-- Google Fonts 可配置加载
-- 结构化页脚配置
-
 ## 项目结构
 
 ```
@@ -189,3 +151,7 @@ git push
 - 站点：[sadougu.github.io](https://sadougu.github.io)
 - GitHub：[sadougu](https://github.com/sadougu)
 - 主题：[hexo-theme-flatpaper](https://github.com/Homulilly/hexo-theme-flatpaper)
+
+## License
+
+MIT
