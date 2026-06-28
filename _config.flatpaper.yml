@@ -269,21 +269,39 @@ adsense:
     post_bottom:
     sidebar:
 
-# 评论系统选择： twikoo | artalk （留空 / 删除则不启用评论区）
-# 只在文章和独立页面（layout: page）渲染；单篇可在 front-matter 用 `comments: false` 关闭。
-comments:
+# 评论系统：twikoo | artalk | giscus | utterances（留空则不启用）
+# 只在文章和独立页面渲染；单篇可用 front-matter `comments: false` 关闭。
+# GitHub Pages 推荐 utterances 或 giscus，无需自建后端。
+comments: utterances
 
-# Twikoo（https://twikoo.js.org，需自行部署后端 https://twikoo.js.org/quick-start.html）
+# Utterances（https://utteranc.es，基于 GitHub Issues）
+# 安装 App：https://github.com/apps/utterances ，授权本仓库后即可使用
+utterances:
+  repo: sadougu/sadougu.github.io
+  issue_term: pathname
+  theme: preferred-color-scheme
+
+# Giscus（https://giscus.app，基于 GitHub Discussions，体验更好）
+# 1. 仓库 Settings 开启 Discussions
+# 2. 安装 App：https://github.com/apps/giscus
+# 3. 在 https://giscus.app/zh 生成配置，填入下方 category_id
+# giscus:
+#   repo: sadougu/sadougu.github.io
+#   repo_id: "1276553461"
+#   category: General
+#   category_id: ""
+#   mapping: pathname
+#   lang: zh-CN
+#   theme: preferred_color_scheme
+
+# Twikoo（https://twikoo.js.org，需自行部署后端）
 twikoo:
-  envId:                                # Twikoo 后端 URL，例如：https://twikoo.example.com
-  # cdn:                                # 可选；覆盖默认 jsDelivr CDN（私有镜像 / 企业 CDN）
+  envId:
 
-# Artalk（https://artalk.js.org，需自行部署后端 https://artalk.js.org/guide/deploy.html）
+# Artalk（https://artalk.js.org，需自行部署后端）
 artalk:
-  server:                               # Artalk 后端 URL，例如：https://artalk.example.com
-  site:                                 # 站点名（需与 Artalk 后台已注册的站点一致）
-  # cdn_css:                            # 可选；覆盖默认 jsDelivr CSS
-  # cdn_js:                             # 可选；覆盖默认 jsDelivr JS
+  server:
+  site:
 
 # Fancybox 图片灯箱（https://fancyapps.com/fancybox/）
 # 启用后，文章页与独立页面（layout: page）的正文 <img> 自动用 Fancybox 包裹：

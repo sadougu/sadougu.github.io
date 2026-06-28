@@ -13,8 +13,12 @@ var canRender = isContentPage && page.comments !== false;
 
 var tk = theme.twikoo || {};
 var ak = theme.artalk || {};
+var gs = theme.giscus || {};
+var ut = theme.utterances || {};
 var renderTwikoo = canRender && sys === 'twikoo' && tk.envId;
 var renderArtalk = canRender && sys === 'artalk' && ak.server;
+var renderGiscus = canRender && sys === 'giscus' && gs.repo && gs.repo_id && gs.category_id;
+var renderUtterances = canRender && sys === 'utterances' && ut.repo;
 // JSON.stringify alone leaves "</script>" intact, which would terminate the
 // inline init script early if a page title/config value contains it.
 function jsonForScript(value) {
@@ -56,4 +60,43 @@ window.addEventListener('load', function () {
   });
 });
 </script>
+<% } else if (renderGiscus) { %>
+<section class="comments-section" aria-label="<%= flatpaper_i18n('common.comments') %>">
+  <header class="comments-section__head">
+    <h2><%- partial('_partial/icons', { icon: 'message-circle' }) %><%= flatpaper_i18n('common.comments') %></h2>
+  </header>
+  <div class="giscus-container">
+    <script src="https://giscus.app/client.js"
+      data-repo="<%- gs.repo %>"
+      data-repo-id="<%- gs.repo_id %>"
+      data-category="<%- gs.category || 'General' %>"
+      data-category-id="<%- gs.category_id %>"
+      data-mapping="<%- gs.mapping || 'pathname' %>"
+      data-strict="<%- gs.strict ? '1' : '0' %>"
+      data-reactions-enabled="<%- gs.reactions === false ? '0' : '1' %>"
+      data-emit-metadata="<%- gs.emit_metadata ? '1' : '0' %>"
+      data-input-position="<%- gs.input_position || 'bottom' %>"
+      data-theme="<%- gs.theme || 'preferred_color_scheme' %>"
+      data-lang="<%- gs.lang || 'zh-CN' %>"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+</section>
+<% } else if (renderUtterances) { %>
+<section class="comments-section" aria-label="<%= flatpaper_i18n('common.comments') %>">
+  <header class="comments-section__head">
+    <h2><%- partial('_partial/icons', { icon: 'message-circle' }) %><%= flatpaper_i18n('common.comments') %></h2>
+  </header>
+  <div class="utterances-container">
+    <script src="https://utteranc.es/client.js"
+      repo="<%- ut.repo %>"
+      issue-term="<%- ut.issue_term || 'pathname' %>"
+      label="<%- ut.label || '' %>"
+      theme="<%- ut.theme || 'preferred-color-scheme' %>"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+</section>
 <% } %>
