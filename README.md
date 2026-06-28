@@ -16,6 +16,7 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
+| 2026-06-28 | [Moomoo 评测：富途牛牛在新加坡，我为什么推荐它](https://sadougu.github.io/2026/06/28/Moomoo评测：富途牛牛新加坡投资平台推荐/) | life |
 | 2026-06-26 | [Tiger Trade 评测：一个账户投资全球，我为什么推荐老虎证券](https://sadougu.github.io/2026/06/26/Tiger-Trade评测：一个账户投资全球，我为什么推荐老虎证券/) | life |
 | 2026-06-25 | [Trust Card 评测：新加坡最省心的信用卡推荐](https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/) | life |
 | 2026-06-24 | [Endowus 评测：在新加坡用 CPF、SRS 和现金低成本投资](https://sadougu.github.io/2026/06/24/Endowus评测：新加坡低成本投资CPF与SRS/) | life |
