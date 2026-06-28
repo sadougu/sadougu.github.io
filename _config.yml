@@ -107,6 +107,9 @@ feed:
 
 sitemap:
   path: sitemap.xml
+  rel: true
+  tags: true
+  categories: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
