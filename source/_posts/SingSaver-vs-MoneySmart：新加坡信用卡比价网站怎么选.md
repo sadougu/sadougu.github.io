@@ -9,14 +9,11 @@ tags:
   - 省钱
 categories:
   - life
-cover: https://mhgprod.blob.core.windows.net/singsaver/strapi-uploads/xlarge_hero_bg_Orange_1_d015be155f.webp
 ---
 
 在新加坡办信用卡，除了银行官网，很多人会选择 **SingSaver** 或 **MoneySmart** 这类比价平台——同一款卡，通过平台申请有时能额外拿几百新币现金、FairPrice 礼券，甚至 Dyson、iPad 等礼品。但平台礼包和银行官网礼包能叠加吗？两家网站又有什么区别？这篇帮你一次理清。
 
 <!-- more -->
-
-![SingSaver 信用卡比价](https://mhgprod.blob.core.windows.net/singsaver/strapi-uploads/xlarge_hero_bg_Orange_1_d015be155f.webp)
 
 ## 一句话结论
 
