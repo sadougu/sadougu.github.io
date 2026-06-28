@@ -278,7 +278,7 @@ comments: utterances
 # 安装 App：https://github.com/apps/utterances ，授权本仓库后即可使用
 utterances:
   repo: sadougu/sadougu.github.io
-  issue_term: pathname
+  issue_term: url
   theme: preferred-color-scheme
 
 # Giscus（https://giscus.app，基于 GitHub Discussions，体验更好）
