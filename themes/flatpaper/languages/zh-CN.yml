@@ -44,6 +44,21 @@ links:
   empty_data: 暂未加载到友链数据。请确认 source/_data/links.yml 存在并已 hexo clean。
   rss_label: "%s 的 RSS"
 
+friends_feed:
+  label: 朋友圈
+  title: 友链朋友圈
+  loading: 正在加载友链动态…
+  missing_url: 暂未配置 all.json 地址。
+  load_failed: 友链动态加载失败，请稍后再试。
+  empty: 暂时没有抓取到友链文章。
+  load_more: 加载更多
+  updated_at: 更新于 %s
+  friend_count: "%d 位友邻"
+  active_count: "%d 位活跃"
+  article_count: "%d 篇文章"
+  unknown_author: 未知站点
+  date_unknown: 时间未知
+
 post:
   scroll_to_comments: 跳转到评论区
   previous: 上一篇
@@ -118,12 +133,14 @@ welcome:
 
 home_hero:
   label: 首页开屏
-  enter: 进入首页
+  enter: 开始阅读
   note: 今日
   default_subtitle: 日常记录
+  nav_links: 开屏导航
   profile_links: 个人链接
   tools: 开屏工具
   shuffle_stickers: 打乱贴纸位置
+  link: 链接
   sticker_image: 贴纸图片
   visit_confirm: 要访问 %s 吗？
   visit: 访问

@@ -36,14 +36,19 @@ nav:
     #       icon: https://homulilly.com/images/avatar.jpg
     # - title: Project
     #   item:
-    #     - name: 简易工具
-    #       link: https://tools.ooo.run
-    #       icon: https://tools.ooo.run/favicon.ico
+    #     - name: Flatpaper Tools
+    #       link: https://hexotag.nep.me
+    #       icon: https://hexotag.nep.me/icon.svg
 
-# Favicon：默认使用主题内置 /images/favicon.svg。
+# Favicon：默认使用主题内置 /images/favicon.png。
 # 设为 false 时不输出 <link rel="icon">，交给浏览器请求站点根目录 /favicon.ico。
-# favicon: /images/favicon.svg
+# favicon: /images/favicon.png
 # favicon: false
+
+# 背景特效
+# 选项: default(默认纸纹) / grid(网格) / line(横线) / cross(十字星) / dotted(点阵)
+background:
+  style: default
 
 profile:
   role: 日常记录
@@ -58,7 +63,8 @@ profile:
     # categories: /categories/
     # tags: /tags/
   social:
-    # 内置图标（按键名自动匹配，大小写不敏感）：
+    # 内置图标（按键名自动匹配，大小写不敏感）。未加前缀时优先匹配 Lucide；
+    # Font Awesome Free 6 可写 fa-solid:trash-can / fa-regular:heart / fa-brands:github。
     #   github, twitter, x, mail/email, rss,
     #   steam, bilibili, youtube, facebook, instagram, telegram, weibo
     # 写法 1：键 -> URL（按键名自动匹配图标）
@@ -108,16 +114,32 @@ home_hero:
   # bio: 写给路过此处的你。
   # avatar: /images/avatar.jpg
   # avatar_shape: circle
+  #
   # 背景图。留空时使用主题内置的手账纸张背景；设置后图片会铺满开屏。
   # 也可配置为数组，浏览器每次载入随机使用一张。
   # image: /images/hero.jpg
   # image:
   #   - /images/hero-1.jpg
   #   - /images/hero-2.jpg
+  #
   # 背景图暗色遮罩透明度：[顶部, 底部]，范围 0-1。
-  # image_overlay: [0.22, 0.58]
-  # 底部跳动箭头的目标锚点；默认进入首页内容区。
+  # image_overlay: [0.2, 0.2]
+  # 底部贴纸按钮的文字与目标锚点；默认进入首页内容区。
+  # cta_text: 开始阅读
   # cta_link: "#flatpaper-home-content"
+  # 贴纸按钮背景：01-09、random，或自定义图片路径。
+  # cta_background: 01
+  #
+  # Hero 区域的快速导航链接。配置后将替代默认的波浪线分隔符。
+  # hero_links:
+  #   - name: 归档
+  #     link: /archives/
+  #   - name: 分类
+  #     link: /categories/
+  #   - name: Flatpaper Tools
+  #     link: https://hexotag.nep.me
+  #     alt: Flatpaper Tools
+  # 一些贴纸装饰
   stickers:
     enable: true
     draggable: true
@@ -144,6 +166,11 @@ latest_posts:
   limit: 5
 # 文章页底部"相关文章"展示数量；0 表示禁用；不配置则默认 3 篇
 related_posts: 4
+
+# 文章页顶部大图模式：
+# 留空禁用；top_img 只使用文章 front-matter 的 top_img；fallback 则 top_img 优先，缺省时按 cover/thumbnail/image/banner/正文首图解析。
+post_top_img:
+  mode:
 
 # 文章正文加粗文本是否使用主题色；设为 false 则只保留默认加粗。
 article:
@@ -184,6 +211,16 @@ tags:
 links:
   style: tape
 
+# Friend-Circle-Lite 兼容数据
+# https://github.com/willow-god/Friend-Circle-Lite
+# 构建时会读取 source/_data/links.yml，并在站点根目录输出 /friend.json
+# 只有配置了非空 rss 字段的友链会写入 friend.json。
+# 将该 URL 填入 Friend-Circle-Lite 的 spider_settings.json_url 即可复用友链数据。
+fcl:
+  friend_json:
+    enable: true
+    path: friend.json
+
 # 图标按钮样式： circle（默认圆形，1px 虚线）| tape（手帐贴纸：墨团圆角、手贴歪斜、悬停胶带斜纹）
 # 作用于：顶栏 logo/汉堡/搜索/调色盘/明暗切换、社交链接、文章反应按钮、TOC 折叠、搜索关闭、窄屏抽屉关闭
 buttons:
@@ -208,12 +245,27 @@ color: green
 tape:
   enable: true
 
-# 页脚（支持 HTML；占位符：{year}=当前年份，{name}=站点 _config.yml 的 author，{theme}=主题署名链接）
-# 想去掉主题署名直接删掉 {theme} 即可
+# 页脚：
+# - left 支持 HTML；占位符：{year}=当前年份，{name}=站点 _config.yml 的 author
+# - powered 负责主题署名；设为 false 或配置 enable: false 可关闭
+# - links 支持一维链接列表（一行）或二维链接列表（多行），同一行内用 " · " 分隔
 # 不配置 footer 时默认：左 "© {year} {author}"，右 "Powered by Theme FlatPaper"
 footer:
   left: '© {year} By {name}'
-  right: 'Powered by Theme {theme}'
+  powered:
+    enable: true
+    prefix: Powered by Theme
+    name: FlatPaper
+    link: https://github.com/Homulilly/hexo-theme-flatpaper
+  links:
+    # -
+    #   - name: 服务条款
+    #     link: /terms
+    #   - name: 隐私政策
+    #     link: /privacy
+    # -
+    #   - name: Flatpaper Tools
+    #     link: https://hexotag.nep.me/
 
 # {% note %} 提示块外观风格：
 #   flat      左侧实色条 + 淡背景填充（默认）
@@ -241,6 +293,14 @@ umami:
   host:                                 # 例如：analytics.example.com
   website_id:                           # 例如：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   # domains: example.com,www.example.com
+
+# Google Analytics 4 / Google tag (gtag.js)
+# enable 为 true 且 measurement_id 合法时，会在每个页面 <head> 开头注入：
+#   <script async src="https://www.googletagmanager.com/gtag/js?id=<measurement_id>"></script>
+# measurement_id GA4 衡量 ID，形如 G-12345678
+google_analytics:
+  enable: false
+  measurement_id:                       # 例如：G-12345678
 
 # Google AdSense
 # enable 为 true 且 client 合法时，会在每个页面 <head> 中注入 AdSense loader：
@@ -288,6 +348,23 @@ fancybox:
   enable: true
   # cdn_css:                            # 可选；覆盖默认 jsDelivr CSS
   # cdn_js:
+
+# Google Fonts。默认关闭；开启后会在 <head> 注入 Google Fonts CSS。
+# cdn 可填写镜像域名，用于覆盖 https://fonts.googleapis.com，例如 https://fonts.loli.net。
+google_fonts:
+  enable: false
+  cdn: https://fonts.googleapis.com
+  # 可选：为固定文本单独加载一个裁剪字体，会自动排在 fonts 前面。
+  # text_font 可使用字重语法；text 是要保留的字符集。动态正文不建议使用。
+  # text_font: Noto Sans JP:wght@400;700
+  # text: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+  # 按顺序填写字体名称即可；第一个字体会优先用于正文。
+  # 有特殊字重需求时，可使用 Google Fonts 语法，如 Noto Sans SC:wght@400;700。
+  fonts:
+    # - Noto Sans SC
+  # 等宽字体单独配置；也可以只填写 mono，不改变正文字体。
+  mono:
+    # - JetBrains Mono
 
 # 自定义 css 与 js 注入
 # head：每个条目原样输出到 </head> 之前

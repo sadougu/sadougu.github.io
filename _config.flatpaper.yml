@@ -27,10 +27,15 @@ nav:
     #       link: https://tools.ooo.run
     #       icon: https://tools.ooo.run/favicon.ico
 
-# Favicon：默认使用主题内置 /images/favicon.svg。
+# Favicon：默认使用主题内置 /images/favicon.png。
 # 设为 false 时不输出 <link rel="icon">，交给浏览器请求站点根目录 /favicon.ico。
-# favicon: /images/favicon.svg
+# favicon: /images/favicon.png
 # favicon: false
+
+# 背景特效
+# 选项: default(默认纸纹) / grid(网格) / line(横线) / cross(十字星) / dotted(点阵)
+background:
+  style: default
 
 profile:
   role: 省钱速报
@@ -104,8 +109,11 @@ home_hero:
   #   - /images/hero-2.jpg
   # 背景图暗色遮罩透明度：[顶部, 底部]，范围 0-1。
   # image_overlay: [0.22, 0.58]
-  # 底部跳动箭头的目标锚点；默认进入首页内容区。
+  # 底部贴纸按钮的文字与目标锚点；默认进入首页内容区。
+  # cta_text: 开始阅读
   # cta_link: "#flatpaper-home-content"
+  # 贴纸按钮背景：01-09、random，或自定义图片路径。
+  # cta_background: 01
   stickers:
     enable: true
     draggable: true
@@ -132,6 +140,11 @@ latest_posts:
   limit: 5
 # 文章页底部"相关文章"展示数量；0 表示禁用；不配置则默认 3 篇
 related_posts: 4
+
+# 文章页顶部大图模式：
+# 留空禁用；top_img 只使用文章 front-matter 的 top_img；fallback 则 top_img 优先，缺省时按 cover/thumbnail/image/banner/正文首图解析。
+post_top_img:
+  mode:
 
 # 文章正文加粗文本是否使用主题色；设为 false 则只保留默认加粗。
 article:
@@ -196,12 +209,16 @@ color: green
 tape:
   enable: true
 
-# 页脚（支持 HTML；占位符：{year}=当前年份，{name}=站点 _config.yml 的 author，{theme}=主题署名链接）
-# 想去掉主题署名直接删掉 {theme} 即可
-# 不配置 footer 时默认：左 "© {year} {author}"，右 "Powered by Theme FlatPaper"
+# 页脚：
+# - left 支持 HTML；占位符：{year}=当前年份，{name}=站点 _config.yml 的 author
+# - powered 负责主题署名；设为 false 或配置 enable: false 可关闭
 footer:
   left: '© {year} By {name}'
-  right: 'Powered by Theme {theme}'
+  powered:
+    enable: true
+    prefix: Powered by Theme
+    name: FlatPaper
+    link: https://github.com/Homulilly/hexo-theme-flatpaper
 
 # {% note %} 提示块外观风格：
 #   flat      左侧实色条 + 淡背景填充（默认）

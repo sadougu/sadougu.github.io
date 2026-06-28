@@ -51,7 +51,7 @@
   var activeAccent = accents.indexOf(storedAccent) > -1 ? storedAccent : defaultAccent;
   root.setAttribute('data-accent', activeAccent);
   var stored = safeStorage.get('flatpaper-mode');
-  if (stored === 'dark' || stored === null) root.classList.add('dark-mode');
+  if (stored === 'dark') root.classList.add('dark-mode');
 
   function setAccent(value) {
     if (accents.indexOf(value) === -1) value = defaultAccent;
@@ -266,6 +266,195 @@
 
   renderRandomPosts();
 
+  // ---- Friend-Circle-Lite all.json renderer ----
+  function safeRemoteUrl(value, kind) {
+    var raw = String(value || '').trim();
+    if (!raw || /[\u0000-\u001f\u007f\\]/.test(raw)) return '';
+    try {
+      var parsed = new URL(raw, window.location.href);
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+      if (kind !== 'image' && parsed.protocol === 'mailto:') return parsed.href;
+    } catch (e) {
+      return '';
+    }
+    return '';
+  }
+
+  function parseFclDate(value) {
+    var text = String(value || '').trim();
+    if (!text) return { label: t('friends_feed.date_unknown'), time: 0 };
+    var normalized = text.replace(/\//g, '-').replace(' ', 'T');
+    var timestamp = Date.parse(normalized);
+    return { label: text, time: isNaN(timestamp) ? 0 : timestamp };
+  }
+
+  function normalizeFclArticles(payload) {
+    var raw = payload && Array.isArray(payload.article_data) ? payload.article_data : [];
+    var seen = {};
+    return raw.map(function (item) {
+      var link = safeRemoteUrl(item && item.link);
+      var title = String((item && item.title) || '').trim();
+      if (!link || !title) return null;
+      var key = link.replace(/\/+$/, '').toLowerCase();
+      if (seen[key]) return null;
+      seen[key] = true;
+      var date = parseFclDate(item.created || item.published || item.updated);
+      return {
+        title: title,
+        link: link,
+        author: String(item.author || '').trim(),
+        avatar: safeRemoteUrl(item.avatar, 'image'),
+        dateLabel: date.label,
+        dateTime: date.time
+      };
+    }).filter(Boolean).sort(function (a, b) {
+      return b.dateTime - a.dateTime;
+    });
+  }
+
+  function renderFriendsFeed() {
+    document.querySelectorAll('.friends-feed[data-fcl-all-json]').forEach(function (feed) {
+      var endpoint = safeRemoteUrl(feed.dataset.fclAllJson);
+      var state = feed.querySelector('[data-feed-state]');
+      var list = feed.querySelector('[data-feed-list]');
+      var more = feed.querySelector('[data-feed-more]');
+      var summary = feed.querySelector('.friends-feed__summary');
+      if (!state || !list || !more) return;
+      if (!endpoint) {
+        state.textContent = t('friends_feed.missing_url');
+        return;
+      }
+      var avatarFallback = safeRemoteUrl(feed.dataset.avatarFallback, 'image');
+
+      var pageSize = parseInt(feed.dataset.pageSize, 10);
+      if (!pageSize || pageSize < 1) pageSize = 20;
+      var shown = 0;
+      var articles = [];
+
+      function setState(message, isError) {
+        state.textContent = message || '';
+        state.hidden = !message;
+        state.classList.toggle('is-error', !!isError);
+      }
+
+      function renderStats(payload) {
+        var stats = (payload && payload.statistical_data) || {};
+        var friends = feed.querySelector('[data-feed-stat="friends"]');
+        var active = feed.querySelector('[data-feed-stat="active"]');
+        var articleCount = feed.querySelector('[data-feed-stat="articles"]');
+        var updated = feed.querySelector('[data-feed-updated]');
+        if (friends && typeof stats.friends_num === 'number') friends.textContent = t('friends_feed.friend_count', stats.friends_num);
+        if (active && typeof stats.active_num === 'number') active.textContent = t('friends_feed.active_count', stats.active_num);
+        if (articleCount) articleCount.textContent = t('friends_feed.article_count', articles.length || stats.article_num || 0);
+        if (updated && stats.last_updated_time) updated.textContent = t('friends_feed.updated_at', stats.last_updated_time);
+        if (summary) summary.hidden = false;
+      }
+
+      function fallbackAvatar(author) {
+        var span = document.createElement('span');
+        span.className = 'friends-feed-card__avatar friends-feed-card__avatar--text';
+        span.textContent = (author || '?').charAt(0);
+        return span;
+      }
+
+      function createArticleCard(article) {
+        var item = document.createElement('li');
+        item.className = 'friends-feed-card';
+
+        var avatarWrap = document.createElement('a');
+        avatarWrap.className = 'friends-feed-card__avatar-link';
+        avatarWrap.href = article.link;
+        avatarWrap.target = '_blank';
+        avatarWrap.rel = 'noopener noreferrer';
+        avatarWrap.setAttribute('aria-label', article.author || article.title);
+
+        if (article.avatar) {
+          var img = document.createElement('img');
+          img.className = 'friends-feed-card__avatar';
+          img.src = article.avatar;
+          img.alt = article.author || '';
+          img.loading = 'lazy';
+          img.referrerPolicy = 'no-referrer';
+          img.addEventListener('error', function () {
+            if (avatarFallback && img.dataset.flatpaperAvatarFallback !== '1' && img.src !== avatarFallback) {
+              img.dataset.flatpaperAvatarFallback = '1';
+              img.src = avatarFallback;
+              return;
+            }
+            while (avatarWrap.firstChild) avatarWrap.removeChild(avatarWrap.firstChild);
+            avatarWrap.appendChild(fallbackAvatar(article.author));
+          });
+          avatarWrap.appendChild(img);
+        } else {
+          avatarWrap.appendChild(fallbackAvatar(article.author));
+        }
+
+        var body = document.createElement('div');
+        body.className = 'friends-feed-card__body';
+
+        var meta = document.createElement('div');
+        meta.className = 'friends-feed-card__meta';
+        var author = document.createElement('span');
+        author.className = 'friends-feed-card__author';
+        author.textContent = article.author || t('friends_feed.unknown_author');
+        meta.appendChild(author);
+        var time = document.createElement('time');
+        time.className = 'friends-feed-card__date';
+        time.textContent = article.dateLabel;
+        if (article.dateTime) time.dateTime = new Date(article.dateTime).toISOString();
+        meta.appendChild(time);
+
+        var title = document.createElement('a');
+        title.className = 'friends-feed-card__title';
+        title.href = article.link;
+        title.target = '_blank';
+        title.rel = 'noopener noreferrer';
+        title.textContent = article.title;
+
+        body.appendChild(meta);
+        body.appendChild(title);
+        item.appendChild(avatarWrap);
+        item.appendChild(body);
+        return item;
+      }
+
+      function renderNext() {
+        var next = articles.slice(shown, shown + pageSize);
+        next.forEach(function (article) {
+          list.appendChild(createArticleCard(article));
+        });
+        shown += next.length;
+        more.hidden = shown >= articles.length;
+      }
+
+      more.addEventListener('click', renderNext);
+      setState(t('friends_feed.loading'));
+
+      fetch(endpoint, { headers: { Accept: 'application/json,text/plain,*/*' } })
+        .then(function (response) {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return response.json();
+        })
+        .then(function (payload) {
+          articles = normalizeFclArticles(payload);
+          list.innerHTML = '';
+          shown = 0;
+          renderStats(payload);
+          if (!articles.length) {
+            setState(t('friends_feed.empty'));
+            return;
+          }
+          setState('');
+          renderNext();
+        })
+        .catch(function () {
+          setState(t('friends_feed.load_failed'), true);
+        });
+    });
+  }
+
+  renderFriendsFeed();
+
   // ---- Home hero: scroll affordance and draggable scrapbook stickers ----
   (function () {
     var hero = document.querySelector('.home-hero');
@@ -311,10 +500,27 @@
       hero.style.setProperty('--hero-bg-image', next);
     }
 
+    function applyRandomHeroCtaBackground() {
+      var trigger = hero.querySelector('[data-hero-cta-backgrounds]');
+      if (!trigger) return;
+      var rawImages = trigger.getAttribute('data-hero-cta-backgrounds');
+      if (!rawImages) return;
+      var images = [];
+      try { images = JSON.parse(rawImages); } catch (e) { images = []; }
+      images = images.filter(function (image) {
+        return typeof image === 'string' && image;
+      });
+      if (images.length < 2) return;
+      var selected = images[Math.floor(Math.random() * images.length)];
+      var next = 'url("' + selected.replace(/"/g, '\\"') + '")';
+      if (trigger.style.getPropertyValue('--hero-cta-bg').trim() === next) return;
+      trigger.style.setProperty('--hero-cta-bg', next);
+    }
+
     function homeTop() {
       if (!homeTarget) return hero.offsetTop + hero.offsetHeight;
       var headerHeight = header ? header.getBoundingClientRect().height : 0;
-      var offset = headerHeight ? headerHeight + 60 : 60;
+      var offset = headerHeight ? headerHeight + 56 : 56;
       return Math.max(0, homeTarget.getBoundingClientRect().top + window.pageYOffset - offset);
     }
 
@@ -325,27 +531,27 @@
 
     function scrollToHome() {
       if (!homeTarget) return;
-      closeStickerConfirm();
+      closeVisitConfirm();
       window.scrollTo({ top: homeTop(), behavior: 'smooth' });
       window.setTimeout(function () {
         setHeroActive();
       }, 520);
     }
 
-    function closeStickerConfirm() {
+    function closeVisitConfirm() {
       if (!confirmBubble) return;
       confirmBubble.remove();
       confirmBubble = null;
     }
 
-    function openStickerConfirm(sticker) {
-      var href = sticker.getAttribute('href');
+    function openVisitConfirm(trigger) {
+      var href = trigger.getAttribute('href');
       if (!href) return;
-      var label = sticker.getAttribute('aria-label') || t('home_hero.sticker_image');
-      closeStickerConfirm();
+      var label = trigger.getAttribute('aria-label') || trigger.getAttribute('title') || trigger.textContent || t('home_hero.link');
+      closeVisitConfirm();
 
       confirmBubble = document.createElement('div');
-      confirmBubble.className = 'hero-sticker-confirm';
+      confirmBubble.className = 'hero-visit-confirm';
       confirmBubble.setAttribute('role', 'group');
       confirmBubble.setAttribute('aria-label', t('home_hero.visit_confirm', label));
 
@@ -354,23 +560,24 @@
       confirmBubble.appendChild(message);
 
       var actions = document.createElement('div');
-      actions.className = 'hero-sticker-confirm__actions';
+      actions.className = 'hero-visit-confirm__actions';
 
       var visit = document.createElement('button');
       visit.type = 'button';
-      visit.className = 'hero-sticker-confirm__visit';
+      visit.className = 'hero-visit-confirm__visit';
       visit.textContent = t('home_hero.visit');
       visit.addEventListener('click', function () {
-        var target = sticker.getAttribute('target');
+        var target = trigger.getAttribute('target');
+        closeVisitConfirm();
         if (target === '_blank') window.open(href, '_blank', 'noopener');
         else window.location.href = href;
       });
 
       var cancel = document.createElement('button');
       cancel.type = 'button';
-      cancel.className = 'hero-sticker-confirm__cancel';
+      cancel.className = 'hero-visit-confirm__cancel';
       cancel.textContent = t('home_hero.cancel');
-      cancel.addEventListener('click', closeStickerConfirm);
+      cancel.addEventListener('click', closeVisitConfirm);
 
       actions.appendChild(visit);
       actions.appendChild(cancel);
@@ -378,12 +585,12 @@
       hero.appendChild(confirmBubble);
 
       var heroRect = hero.getBoundingClientRect();
-      var stickerRect = sticker.getBoundingClientRect();
+      var triggerRect = trigger.getBoundingClientRect();
       var bubbleRect = confirmBubble.getBoundingClientRect();
-      var left = stickerRect.left - heroRect.left + (stickerRect.width / 2) - (bubbleRect.width / 2);
-      var top = stickerRect.top - heroRect.top - bubbleRect.height - 12;
+      var left = triggerRect.left - heroRect.left + (triggerRect.width / 2) - (bubbleRect.width / 2);
+      var top = triggerRect.top - heroRect.top - bubbleRect.height - 12;
       left = clamp(left, 12, hero.clientWidth - bubbleRect.width - 12);
-      if (top < 12) top = stickerRect.bottom - heroRect.top + 12;
+      if (top < 12) top = triggerRect.bottom - heroRect.top + 12;
       top = clamp(top, 12, hero.clientHeight - bubbleRect.height - 12);
       confirmBubble.style.left = left + 'px';
       confirmBubble.style.top = top + 'px';
@@ -392,6 +599,42 @@
 
     var scrollLinks = hero.querySelectorAll('[data-hero-scroll]');
     applyRandomHeroImage();
+    applyRandomHeroCtaBackground();
+    var heroSocialLinks = hero.querySelector('.home-hero__links');
+    function syncClippedHeroLinks() {
+      if (!heroSocialLinks) return;
+      heroSocialLinks.style.setProperty('--hero-links-offset', '0px');
+      Array.prototype.forEach.call(heroSocialLinks.querySelectorAll('a'), function (link) {
+        link.style.visibility = '';
+        link.style.pointerEvents = '';
+        link.removeAttribute('aria-hidden');
+        link.removeAttribute('tabindex');
+      });
+      var containerWidth = heroSocialLinks.clientWidth;
+      var visibleRight = 0;
+      Array.prototype.forEach.call(heroSocialLinks.querySelectorAll('a'), function (link) {
+        var clipped = link.offsetLeft + link.offsetWidth > containerWidth + 1;
+        if (clipped) {
+          link.style.visibility = 'hidden';
+          link.style.pointerEvents = 'none';
+          link.setAttribute('aria-hidden', 'true');
+          link.setAttribute('tabindex', '-1');
+        } else {
+          visibleRight = Math.max(visibleRight, link.offsetLeft + link.offsetWidth);
+        }
+      });
+      var offset = Math.max(0, Math.floor((containerWidth - visibleRight) / 2));
+      heroSocialLinks.style.setProperty('--hero-links-offset', offset + 'px');
+    }
+    window.requestAnimationFrame(syncClippedHeroLinks);
+    window.addEventListener('resize', function () {
+      window.requestAnimationFrame(syncClippedHeroLinks);
+    }, { passive: true });
+    if (window.ResizeObserver && heroSocialLinks) {
+      new ResizeObserver(function () {
+        window.requestAnimationFrame(syncClippedHeroLinks);
+      }).observe(heroSocialLinks);
+    }
     scrollLinks.forEach(function (link) {
       link.addEventListener('click', function (event) {
         var href = link.getAttribute('href') || '';
@@ -400,6 +643,15 @@
         if (!target) return;
         event.preventDefault();
         scrollToHome();
+      });
+    });
+
+    var externalNavLinks = hero.querySelectorAll('.home-hero__nav-link[target="_blank"]');
+    externalNavLinks.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        openVisitConfirm(link);
       });
     });
 
@@ -444,7 +696,7 @@
         if (sticker.matches && sticker.matches('a.hero-sticker--custom[href]')) {
           event.preventDefault();
           event.stopPropagation();
-          openStickerConfirm(sticker);
+          openVisitConfirm(sticker);
         }
       });
 
@@ -515,7 +767,7 @@
     var shuffleButton = hero.querySelector('.js-hero-shuffle');
     if (shuffleButton) {
       shuffleButton.addEventListener('click', function () {
-        closeStickerConfirm();
+        closeVisitConfirm();
         stickers.forEach(function (sticker, index) {
           delete sticker.dataset.heroDragged;
           sticker.style.zIndex = '';
@@ -528,11 +780,11 @@
     document.addEventListener('click', function (event) {
       if (!confirmBubble) return;
       if (confirmBubble.contains(event.target)) return;
-      if (event.target.closest && event.target.closest('a.hero-sticker--custom[href]')) return;
-      closeStickerConfirm();
+      if (event.target.closest && event.target.closest('a.hero-sticker--custom[href], .home-hero__nav-link[target="_blank"]')) return;
+      closeVisitConfirm();
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeStickerConfirm();
+      if (event.key === 'Escape') closeVisitConfirm();
     });
   })();
 

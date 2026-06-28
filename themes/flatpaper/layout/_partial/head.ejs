@@ -151,7 +151,7 @@ if (is_post()) {
 } else {
   jsonLd.about = titleParts.length ? titleParts[0] : siteTitle;
 }
-var favicon = theme.favicon === false ? '' : (theme.favicon || '/images/favicon.svg');
+var favicon = theme.favicon === false ? '' : (theme.favicon || '/images/favicon.png');
 var faviconMime = faviconType(favicon);
 %>
 <title><%= fullTitle %></title>
@@ -177,11 +177,11 @@ if (['orange', 'purple', 'sakura', 'blue', 'pink', 'green', 'black'].indexOf(acc
     if (!accents[accent]) accent = '<%= accentColor %>';
     document.documentElement.setAttribute('data-accent', accent);
     try {
-      var mode = localStorage.getItem('flatpaper-mode');
-      if (mode === 'dark' || mode === null) {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
         document.documentElement.classList.add('dark-mode');
       }
     } catch (e) {}
   })();
 </script>
 <%- css('css/style') %>
+<%- partial('_partial/google-fonts') %>

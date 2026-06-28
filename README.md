@@ -17,6 +17,7 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
+| 2026-06-26 | [Tiger Trade 评测：一个账户投资全球，我为什么推荐老虎证券](https://sadougu.github.io/2026/06/26/Tiger-Trade评测：一个账户投资全球，我为什么推荐老虎证券/) | life |
 | 2026-06-25 | [Trust Card 评测：新加坡最省心的信用卡推荐](https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/) | life |
 | 2026-06-24 | [Endowus 评测：在新加坡用 CPF、SRS 和现金低成本投资](https://sadougu.github.io/2026/06/24/Endowus评测：新加坡低成本投资CPF与SRS/) | life |
 | 2026-06-23 | [新加坡 NTUC 工会会员：一年 $117，到底值不值？](https://sadougu.github.io/2026/06/23/新加坡NTUC工会会员值不值得办/) | life |
@@ -26,9 +27,92 @@
 ## 技术栈
 
 - **框架**：[Hexo](https://hexo.io/) 8.x
-- **主题**：[FlatPaper](https://github.com/Homulilly/hexo-theme-flatpaper)
+- **主题**：[FlatPaper](https://github.com/Homulilly/hexo-theme-flatpaper)（当前版本：2026-06-28）
 - **部署**：GitHub Actions → GitHub Pages
 - **语言**：简体中文（`zh-CN`）
+
+## 用 Grok 一键发帖到 GitHub Pages
+
+本站的文章主要由 [Grok](https://x.ai/) 在 [Cursor](https://cursor.com/) 里撰写并自动推送。你不需要手动敲每一行，只要描述清楚需求，Grok 会完成调研、写稿、构建验证和 Git 推送。
+
+### 前置条件
+
+1. Fork 或 clone 本仓库到本地
+2. 安装 Node.js 18+ 和 Git
+3. 在 Cursor 中打开项目，启用 Grok Agent
+4. 配置 Git 远程仓库写权限（SSH 或 HTTPS + token）
+5. GitHub 仓库 **Settings → Pages → Source** 设为 **GitHub Actions**
+
+### 一键发帖流程
+
+在 Cursor 里对 Grok 说一句话即可，例如：
+
+```
+写一篇介绍 XXX 的文章，发布到 GitHub Pages
+```
+
+Grok 会自动执行以下步骤：
+
+| 步骤 | Grok 做什么 |
+| --- | --- |
+| 1. 调研 | 查阅官方资料和相关评测，独立撰写中文文章 |
+| 2. 写稿 | 在 `source/_posts/` 创建 Markdown，含 front matter（title、date、tags、categories） |
+| 3. 构建 | 运行 `npm run build` 验证 Hexo 生成无报错 |
+| 4. 提交 | `git add` → `git commit` → `git push origin main` |
+| 5. 部署 | GitHub Actions 自动构建并发布到 https://sadougu.github.io |
+
+### 你可以这样提需求
+
+```
+发一篇新帖子推荐 XXX，附上我的邀请码/链接，洗稿不要照抄，语气适合中文读者
+```
+
+```
+根据迄今为止的内容更新 README，并发布到 GitHub
+```
+
+```
+更新 FlatPaper 主题到最新版，并推送
+```
+
+### 文章格式参考
+
+```markdown
+---
+title: 文章标题
+date: 2026-06-26 10:00:00
+tags:
+  - 标签1
+  - 新加坡
+categories:
+  - life
+cover: https://example.com/cover.jpg
+---
+
+摘要段落，显示在首页。
+
+<!-- more -->
+
+正文从这里开始……
+```
+
+### 注意事项
+
+- `public/` 目录已 gitignore，**不要手动提交**，由 GitHub Actions 构建生成
+- 站点主题配置在 `_config.flatpaper.yml`，Hexo 配置在 `_config.yml`
+- 推送 `main` 后约 1–2 分钟生效
+- 如果 push 被拒（邮箱隐私限制），需将 git `user.email` 改为 `用户名@users.noreply.github.com`
+
+### 手动发帖（不用 Grok 时）
+
+```bash
+npx hexo new "文章标题"
+# 编辑 source/_posts/文章标题.md
+npm run build          # 本地验证
+git add source/_posts/
+git commit -m "Add post: 文章标题"
+git push
+```
 
 ## 本地开发
 
@@ -47,29 +131,39 @@ npm run build
 
 生成的静态文件输出到 `public/` 目录（已加入 `.gitignore`，不提交到仓库）。
 
-## 发布新文章
+## 更新 FlatPaper 主题
+
+主题以 vendored 方式存放在 `themes/flatpaper/`（非 git submodule）。更新步骤：
 
 ```bash
-npx hexo new "文章标题"
-```
+# 拉取最新主题
+git clone --depth 1 https://github.com/Homulilly/hexo-theme-flatpaper.git /tmp/flatpaper-latest
 
-编辑 `source/_posts/` 下生成的 Markdown 文件，然后提交并推送：
+# 替换本地主题
+rm -rf themes/flatpaper
+cp -a /tmp/flatpaper-latest themes/flatpaper
+rm -rf themes/flatpaper/.git
 
-```bash
-git add source/_posts/
-git commit -m "Add post: 文章标题"
+# 验证构建
+npm run build
+
+# 提交推送
+git add themes/flatpaper _config.flatpaper.yml
+git commit -m "Update FlatPaper theme"
 git push
 ```
 
-推送到 `main` 分支后，GitHub Actions 会自动执行 `npm run build` 并部署到 GitHub Pages，通常一两分钟内生效。
+站点个性化配置保留在根目录 `_config.flatpaper.yml`，更新主题后对照上游 `_config.yml` 检查是否有新增配置项。
 
-### 文章 URL 规则
+### 近期主题更新亮点（2026-06-28）
 
-当前 permalink 配置为 `:year/:month/:day/:title/`，例如：
-
-```
-https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/
-```
+- 文章顶图（`top_img`）与暗色模式渐变优化
+- 首页 Hero 贴纸 CTA 按钮可自定义
+- Lucide 全量图标 + Font Awesome 6 支持
+- 背景特效（网格 / 横线 / 点阵等）
+- Friend-Circle-Lite 朋友圈兼容
+- Google Fonts 可配置加载
+- 结构化页脚配置
 
 ## 项目结构
 
@@ -79,7 +173,7 @@ https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信
 │   └── about/           # 关于页面
 ├── themes/flatpaper/    # FlatPaper 主题
 ├── _config.yml          # Hexo 站点配置
-├── _config.flatpaper.yml
+├── _config.flatpaper.yml  # 主题个性化配置
 ├── .github/workflows/   # GitHub Actions 部署流程
 └── package.json
 ```
@@ -94,3 +188,4 @@ https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信
 
 - 站点：[sadougu.github.io](https://sadougu.github.io)
 - GitHub：[sadougu](https://github.com/sadougu)
+- 主题：[hexo-theme-flatpaper](https://github.com/Homulilly/hexo-theme-flatpaper)

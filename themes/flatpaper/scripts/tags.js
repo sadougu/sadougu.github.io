@@ -47,6 +47,91 @@ function safeUrl(value, kind) {
 
 hexo.extend.helper.register('flatpaper_safe_url', safeUrl);
 
+function resolvePostCover(post) {
+  if (!post) return '';
+  let cover = post.cover || post.thumbnail || post.image || post.banner || '';
+  if (!cover && post.content) {
+    const m = String(post.content).match(/<img[^>]+src=["']([^"'>]+)["']/i);
+    if (m) cover = m[1];
+  }
+  return cover || '';
+}
+
+hexo.extend.helper.register('flatpaper_cover_info', function (post, fallback) {
+  const rawCover = resolvePostCover(post);
+  let src = rawCover ? safeUrl(this.url_for(rawCover), 'image') : '';
+  let isFallback = false;
+
+  if (!src && fallback) {
+    src = safeUrl(this.url_for(fallback), 'image');
+    isFallback = !!src;
+  }
+
+  return {
+    src,
+    raw: rawCover,
+    isFallback
+  };
+});
+
+hexo.extend.helper.register('flatpaper_post_top_img_info', function (post, mode) {
+  if (!post) return { src: '', raw: '', source: '', disabled: false };
+
+  const normalizedMode = String(mode || '').toLowerCase();
+  if (normalizedMode !== 'top_img' && normalizedMode !== 'fallback') {
+    return { src: '', raw: '', source: '', disabled: false };
+  }
+
+  const hasTopImg = Object.prototype.hasOwnProperty.call(post, 'top_img');
+  const topImg = post.top_img;
+  if (hasTopImg && (topImg === false || String(topImg).toLowerCase() === 'false')) {
+    return { src: '', raw: '', source: 'top_img', disabled: true };
+  }
+
+  if (typeof topImg === 'string' && topImg.trim()) {
+    const src = safeUrl(this.url_for(topImg), 'image');
+    // fallback 模式下，若 top_img 被 safeUrl 拒绝（src 为空），继续向下回退到 cover；
+    // top_img 模式没有回退，直接返回（src 为空即不渲染）。
+    if (src || normalizedMode !== 'fallback') {
+      return { src, raw: topImg, source: 'top_img', disabled: false };
+    }
+  }
+
+  if (normalizedMode !== 'fallback') return { src: '', raw: '', source: '', disabled: false };
+
+  const rawCover = resolvePostCover(post);
+  return {
+    src: rawCover ? safeUrl(this.url_for(rawCover), 'image') : '',
+    raw: rawCover,
+    source: rawCover ? 'cover' : '',
+    disabled: false
+  };
+});
+
+hexo.extend.helper.register('flatpaper_page_top_img_info', function (page) {
+  if (!page || page.layout === 'post') return { src: '', raw: '', source: '', disabled: false };
+
+  if (!Object.prototype.hasOwnProperty.call(page, 'top_img')) {
+    return { src: '', raw: '', source: '', disabled: false };
+  }
+
+  const topImg = page.top_img;
+  if (topImg === false || String(topImg).toLowerCase() === 'false') {
+    return { src: '', raw: '', source: 'top_img', disabled: true };
+  }
+
+  if (typeof topImg !== 'string' || !topImg.trim()) {
+    return { src: '', raw: topImg, source: 'top_img', disabled: false };
+  }
+
+  return {
+    src: safeUrl(this.url_for(topImg), 'image'),
+    raw: topImg,
+    source: 'top_img',
+    disabled: false
+  };
+});
+
 // Posts sorted newest-first, cached for the current generate pass.
 // Several partials (random-posts, sidebar-right, post.ejs related list,
 // index.ejs featured resolver) all call site.posts.sort('date', -1).toArray()

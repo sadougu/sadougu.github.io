@@ -19,6 +19,25 @@ The brandmark link groups move into the sidebar below the author card, and accen
 
 Horizontal overflow from fixed full-screen layers is clipped at the root level to avoid mobile horizontal scrollbars.
 
+## Home Opening Hero
+
+`home_hero` adds an optional first-screen introduction on the first home page.
+
+It can show:
+
+- site title or a custom hero title
+- profile role, bio, avatar, social links, and RSS link
+- a built-in scrapbook paper background
+- one fixed image, or a random image from an array
+- a configurable image overlay
+- a bouncing arrow that scrolls into the home content
+- draggable scrapbook stickers
+- up to five custom image stickers, with optional visit confirmation links
+
+The hero is disabled by default, so existing sites keep the normal home layout until `home_hero.enable` is set to `true`.
+
+See [Configuration → Home Opening Hero](configuration.md#home-opening-hero) for the available options.
+
 ## Cover Images
 
 Post card and featured images are resolved in this order:
@@ -32,6 +51,10 @@ Post card and featured images are resolved in this order:
 If no image exists, FlatPaper renders a CSS illustration fallback.
 
 Images use `object-fit: cover` and `object-position: 50% 50%`.
+
+When `post_top_img.mode` is `top_img` or `fallback`, the resolved top image appears at the top of article pages. The title overlays the image, and the image fades back into the paper below. `top_img` front-matter has priority, and `top_img: false` disables it for that post.
+
+Standalone pages and special `type:` pages also support a page-local `top_img`. Page top images do not use `post_top_img` or any fallback fields; an image appears only when that page front matter sets `top_img`.
 
 ## Search
 
@@ -122,6 +145,7 @@ FlatPaper includes optional wiring for:
 - Artalk
 - Fancybox
 - Umami
+- Google Analytics 4
 - Google AdSense
 - RSS profile link
 - custom HTML injection

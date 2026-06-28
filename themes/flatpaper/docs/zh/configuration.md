@@ -2,6 +2,8 @@
 
 所有主题选项都位于 `themes/flatpaper/_config.yml`。建议先复制为站点根目录下的 `_config.flatpaper.yml` 再修改。
 
+功能新增与行为调整都会以不影响现有配置为核心原则；可能影响现有布局的选项会在站点配置中默认保持关闭，大部分情况下可以直接更新主题，再按需启用新功能。
+
 Header 中的站点标题与页面 description 读取自 Hexo 站点 `_config.yml` 的 `title` 与 `description`。
 
 ## 语言
@@ -22,7 +24,50 @@ language:
 
 只有主题自身的界面文案会被翻译，文章内容、站点数据和你自己的配置值保持原样。
 
-主题附带两份示例配置：`_config.yml`（中文注释与默认值）和 `_config.en.yaml`（键结构相同，注释与默认值为英文）。两者键结构完全一致，按站点语言选用其中一份作为 `_config.flatpaper.yml` 的基础即可。
+主题附带两份示例配置：`_config.yml`（中文注释与默认值）和 `_config.en.yml`（键结构相同，注释与默认值为英文）。两者键结构完全一致，按站点语言选用其中一份作为 `_config.flatpaper.yml` 的基础即可。
+
+## 字体
+
+```yaml
+google_fonts:
+  enable: true
+  cdn: https://fonts.googleapis.com
+  # text_font: Noto Sans JP:wght@400;700
+  # text: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+  fonts:
+    - Noto Sans SC
+  mono:
+    - JetBrains Mono
+```
+
+- `google_fonts.enable` 控制是否注入 Google Fonts 样式表。
+- `fonts` 按顺序填写字体名称即可。FlatPaper 会从 Google Fonts 加载这些字体，并按相同顺序优先用于正文。
+- `mono` 按顺序填写等宽字体名称，用于代码块。也可以只配置 `mono`，不改变正文字体。
+- 有特殊字重需求时，可以使用 Google Fonts 语法，例如 `Noto Sans SC:wght@400;700`。FlatPaper 会用完整值请求 Google Fonts，并在本地 CSS 字体栈中自动只保留 `:` 前的字体名。
+- `text_font` 与 `text` 是配套的可选项。FlatPaper 会用 Google Fonts `text=` 请求 `text_font`，再把它排在 `fonts` 前面。
+- `fonts` 与 `mono` 会单独请求完整字体，不受 `text` 限制，避免正文和代码字符缺失。
+- `cdn` 会替代默认的 `https://fonts.googleapis.com` 样式表域名。可以填写完整 URL 或纯域名，例如 `https://fonts.loli.net` 或 `fonts.example.com`。
+- 字体加载固定使用 `display=swap`。
+
+当 `text` 包含引号或其它标点时，推荐使用 YAML literal block：
+
+```yaml
+google_fonts:
+  text_font: Noto Sans JP:wght@400;700
+  text: |-
+    ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+```
+
+## 背景特效
+
+```yaml
+background:
+  style: default
+```
+
+- `background.style` 默认为 `default`，保留主题原有的淡纸纹背景。
+- 可选值：`default`、`grid`、`line`、`cross`、`dotted`。
+- 选择 `grid`、`line`、`cross` 或 `dotted` 时会切换为新的轻量 CSS 纹理；固定背景效果仅在桌面指针设备上启用，移动端会自动使用普通滚动背景。
 
 ## 导航菜单
 
@@ -45,7 +90,21 @@ menu:
         icon: tag
 ```
 
-`icon` 会通过 `layout/_partial/icons.ejs` 解析。
+`icon` 会通过内置图标 registry 解析。未加前缀的名称优先匹配 Lucide，因此 `icon: archive` 这类旧写法继续可用。需要 Font Awesome Free 6 时加前缀：
+
+```yaml
+menu:
+  GitHub:
+    link: https://github.com/
+    icon: fa-brands:github
+  删除:
+    link: /trash/
+    icon: fa-solid:trash-can
+```
+
+FlatPaper 会在主题内置 Lucide 与 Font Awesome Free 6 图标定义，生成时只输出模板与配置实际用到的 symbol，不加载外部图标 CDN。
+
+Font Awesome Free 6 图标来自 Fonticons, Inc.，SVG 图标使用 CC BY 4.0；Lucide 图标使用 ISC License。版权说明见 `source/_data/icons/NOTICE.md`。
 
 ## Brand Links
 
@@ -89,6 +148,7 @@ profile:
 - `avatar_shape` 支持 `square` 或 `circle`。
 - `site_info` 中空值 / `false` 隐藏，`true` 显示纯文本，其他非空值渲染为链接。
 - `social` 键名会自动匹配内置图标：`github`、`twitter`、`x`、`mail/email`、`rss`、`steam`、`bilibili`、`youtube`、`facebook`、`instagram`、`telegram`、`weibo`。
+- 对象写法可以使用任意 registry 名称，例如 `icon: send`、`icon: fa-brands:mastodon` 或 `icon: fa-solid:globe`。
 
 对象写法可覆盖图标或提供内联 SVG：
 
@@ -131,8 +191,18 @@ home_hero:
   image:
     - /images/hero-1.jpg
     - /images/hero-2.jpg
-  image_overlay: [0.22, 0.58]
+  image_overlay: [0.2, 0.2]
+  cta_text: 开始阅读
   cta_link: "#flatpaper-home-content"
+  cta_background: 01
+  hero_links:
+    - name: 归档
+      link: /archives/
+    - name: 分类
+      link: /categories/
+    - name: Folio
+      link: https://folio.example.com/
+      alt: 查看 Folio
   stickers:
     enable: true
     draggable: true
@@ -149,12 +219,13 @@ home_hero:
 - 默认 `enable: false`，不会影响已有首页；只在首页分页第 1 页渲染。
 - 未配置 `title`、`subtitle`、`bio`、`avatar` 或社交链接时，会复用站点标题与 `profile` 配置。
 - `image` 留空时使用内置手账纸张背景；设置为字符串时固定使用该图片，设置为数组时浏览器每次载入会随机使用一张，图片会在宽屏铺满开屏；窄屏会回退到纸张背景，让贴纸保持清晰。
-- `image_overlay` 控制图片开屏的暗色遮罩，使用 `[顶部, 底部]` 两个 `0` 到 `1` 的透明度数值；默认是 `[0.22, 0.58]`。
+- `image_overlay` 控制图片开屏的可配置暗色遮罩，使用 `[顶部, 底部]` 两个 `0` 到 `1` 的透明度数值；默认是 `[0.2, 0.2]`。
+- `hero_links` 可在开屏简介和社交链接之间添加快速导航链接；配置后会替代默认的波浪线分隔符。每一项需要 `name` 和 `link`，`alt` 可选，用于标签和外链访问确认文案。外链会先弹出访问确认，再在新标签页打开。
 - 开屏中的社交链接复用 profile 的 `.socials` 样式，也会跟随 `buttons.style` 的配置变化。
 - `stickers.draggable` 为 `true` 时，开屏里的贴纸可以在当前页面内随机摆放并拖动，位置不会写入本地存储。
 - `stickers.note_text` 可修改内置便签贴纸的文字。
 - `stickers.items` 可添加图片贴纸；自定义贴纸最多渲染 5 张，加上内置便签后开屏最多 6 个 sticker。`image` 必填，`link` 可选，`size` 可选并限制在 48 到 180 像素。带 `link` 的贴纸会先弹出访问确认气泡，文案使用 `alt`，例如“要访问 GitHub 吗？”。
-- 底部跳动箭头会滚入首页内容；`cta_link` 可改成其它锚点，并会避开顶部导航遮挡。开屏不会根据滚动距离自动进入首页。
+- 底部贴纸按钮会滚入首页内容；`cta_text` 可修改可见文字，`cta_link` 可改成其它锚点，并会避开顶部导航遮挡。`cta_background` 默认使用中性的内置 `01`，也可设置为 `01`-`09`、`random`，或 `/images/my-cta.webp` 这样的自定义图片路径。
 
 ## 文章相关
 
@@ -166,6 +237,8 @@ latest_posts:
   enable: false
   limit: 5
 related_posts: 4
+post_top_img:
+  mode:
 article:
   strong_accent: true
 ```
@@ -175,6 +248,10 @@ article:
 - `random_posts_pool`：从最新 N 篇文章中抽取候选，`0` 或留空表示不限。
 - `latest_posts`：文章页侧栏 TOC 下方的最新文章组件，默认关闭；`limit` 默认 `5`。
 - `related_posts`：相关文章数量，`0` 禁用整块。
+- `post_top_img.mode`：控制文章顶部图；留空禁用。
+- `mode: top_img`：只在文章 front-matter 提供 `top_img` 时渲染。
+- `mode: fallback`：优先使用文章 front-matter 的 `top_img`，缺省时回退到 `cover`、`thumbnail`、`image`、`banner` 或正文第一张图。
+- 当 mode 为 `top_img` 或 `fallback` 时，单篇文章可用 `top_img: false` 关闭顶部图。
 - `article.strong_accent`：文章正文中的加粗文本使用主题色；设为 `false` 时只保留默认加粗。
 
 相关文章评分：
@@ -183,6 +260,20 @@ article:
 - 相同标签 `+2`
 - 0 分文章排除
 - 分数相同时较新文章优先
+
+## 页面顶部图
+
+独立页面和特殊 `type:` 页面只通过页面 front-matter 主动开启：
+
+```yaml
+---
+title: 友情链接
+type: links
+top_img: /images/pages/links.jpg
+---
+```
+
+没有主题级页面顶部图配置。页面未填写 `top_img` 时不会渲染顶部图，且页面顶部图不会回退到 `cover`、`thumbnail`、`image`、`banner` 或正文图片。
 
 ## Reaction 按钮
 
@@ -218,6 +309,35 @@ search:
 `0` 或留空表示索引全部文章；填数字表示只索引最新 N 篇。用户可点击 Header 搜索按钮，或按 `Ctrl+K` / `Cmd+K` 打开搜索。
 
 索引在构建时生成为站点根目录下的独立文件 `flatpaper-search.json`，首次打开搜索面板时才按需加载，不再内联进每个页面。
+
+## Friend-Circle-Lite
+
+```yaml
+fcl:
+  friend_json:
+    enable: true
+    path: friend.json
+```
+
+- `enable`：是否生成 Friend-Circle-Lite 兼容的友链 JSON，默认开启。
+- `path`：输出路径，默认生成在站点根目录 `/friend.json`。
+
+生成器会读取 `source/_data/links.yml` 中每个 `link_list` 的 `rss`、`name`、`link`、`avatar`。只有 `rss` 非空的友链会被去重输出为 Friend-Circle-Lite 的 `friends` 数组；`rss` 字段本身不会写入数组。可选的 `linkpage` / `link_page` / `linkPage` 会作为友链页地址输出。
+
+内置朋友圈页面的数据源在页面 front-matter 中设置，创建页面文件 `fcircle/index.md` 填入下面的内容设置 `fcl_all_json` 链接：
+```yaml
+---
+title: 朋友圈
+type: friends-feed
+comments: false
+# 你的友链朋友圈 all.json 地址
+fcl_all_json: https://raw.githubusercontent.com/<YourName>/<Repo>/refs/heads/page/all.json
+page_size: 20       # 每页加载的动态数量
+source_label:       # 可选来源标签
+# 顶部图片（可选）
+top_img: https://img.nep.me/p/flatpaper/fcircle-top.webp
+---
+```
 
 ## 精选文章
 
@@ -259,14 +379,45 @@ tape:
 ```yaml
 footer:
   left: '© {year} By {name}'
-  right: 'Powered by Theme {theme}'
+  powered:
+    enable: true
+    prefix: Powered by Theme
+    name: FlatPaper
+    link: https://github.com/Homulilly/hexo-theme-flatpaper
+  links:
+    -
+      - name: 服务条款
+        link: /terms
+      - name: 隐私政策
+        link: /privacy
+    -
+      - name: Flatpaper Tools
+        link: https://hexotag.nep.me/
 ```
 
-占位符：
+`footer.right` 已不再解析。页脚右侧由 `powered` 与 `links` 生成。
+
+`left` 支持 HTML 与占位符：
 
 - `{year}`：当前年份
 - `{name}`：站点 `_config.yml` 中的 `author`
-- `{theme}`：FlatPaper 仓库链接
+
+`powered` 负责主题署名：
+
+- `enable`：设为 `false` 可隐藏主题署名
+- `prefix`：署名前缀，默认 `Powered by Theme`
+- `name`：主题名称，默认 `FlatPaper`
+- `link`：主题链接，默认 FlatPaper 仓库
+- 也可以直接写 `powered: false` 关闭整段主题署名
+
+`links` 负责额外链接。一维列表会渲染为一行；二维列表会按行渲染，同一行内默认用 ` · ` 分隔。外部 `http(s)` 链接会自动在新标签页打开。
+
+关闭主题署名时：
+
+```yaml
+footer:
+  powered: false
+```
 
 ## Note 提示块
 
@@ -321,6 +472,29 @@ umami:
 ```
 
 `host` 只接受纯域名或 `domain:port`。`domains` 可省略，支持逗号字符串或 YAML 列表。
+
+## Google Analytics 4
+
+```yaml
+google_analytics:
+  enable: true
+  measurement_id: G-12345678
+```
+
+启用后会在每个页面的 `<head>` 开头注入 Google tag：
+
+```html
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12345678"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-12345678');
+</script>
+```
+
+`measurement_id` 只接受 `G-...` 形式的 GA4 衡量 ID。每个站点只配置一次，避免重复加载 Google tag。
 
 ## AdSense
 

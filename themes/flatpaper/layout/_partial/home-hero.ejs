@@ -43,8 +43,8 @@ function heroOverlayValue(value, fallback) {
 }
 
 function heroImageOverlay(value) {
-  var top = 0.22;
-  var bottom = 0.58;
+  var top = 0.2;
+  var bottom = 0.2;
   if (Array.isArray(value)) {
     top = value[0];
     bottom = value.length > 1 ? value[1] : value[0];
@@ -57,8 +57,8 @@ function heroImageOverlay(value) {
     bottom = parts.length > 1 ? parts[1] : parts[0];
   }
   return {
-    top: heroOverlayValue(top, 0.22),
-    bottom: heroOverlayValue(bottom, 0.58)
+    top: heroOverlayValue(top, 0.2),
+    bottom: heroOverlayValue(bottom, 0.2)
   };
 }
 
@@ -73,6 +73,27 @@ var heroImageCss = heroImage.replace(/[\\"]/g, '\\$&');
 var heroOverlay = heroImageOverlay(hero.image_overlay);
 var ctaHref = heroHref(hero.cta_link || '#flatpaper-home-content');
 var enterLabel = flatpaper_i18n('home_hero.enter');
+var ctaText = hero.cta_text || enterLabel;
+var ctaBackground = hero.cta_background == null ? '01' : String(hero.cta_background).trim();
+var ctaBgImages = [];
+function ctaBuiltinBackground(index) {
+  var number = parseInt(index, 10);
+  if (!isFinite(number) || number < 1 || number > 9) return '';
+  return flatpaper_safe_url(url_for('/images/home/cta/webp/cta-bg-' + String(number).padStart(2, '0') + '.webp'), 'image');
+}
+function ctaBackgroundUrl(value) {
+  var raw = String(value || '').trim();
+  if (!raw) return ctaBuiltinBackground(1);
+  if (/^0?[1-9]$/.test(raw)) return ctaBuiltinBackground(raw);
+  return heroImageUrl(raw);
+}
+if (ctaBackground.toLowerCase() === 'random') {
+  for (var ctaBgIndex = 1; ctaBgIndex <= 9; ctaBgIndex++) {
+    ctaBgImages.push(ctaBuiltinBackground(ctaBgIndex));
+  }
+}
+var ctaBgImage = ctaBgImages[0] || ctaBackgroundUrl(ctaBackground);
+var ctaBgImageCss = ctaBgImage.replace(/[\\"]/g, '\\$&');
 var stickerItems = [
   { key: 'builtin-note', cls: 'hero-sticker--note', text: builtinNoteText }
 ];
@@ -179,6 +200,25 @@ var hasLinkedCustomStickers = customStickerItems.some(function (item) { return !
       <p class="home-hero__eyebrow"><span class="green-dot"></span><%= heroSubtitle || flatpaper_i18n('home_hero.default_subtitle') %></p>
       <h1><%= heroTitle %></h1>
       <p class="home-hero__bio"><%= heroBio %></p>
+      <% var heroLinks = hero.hero_links; %>
+      <% if (heroLinks && Array.isArray(heroLinks) && heroLinks.length > 0) { %>
+        <nav class="home-hero__nav" aria-label="<%= flatpaper_i18n('home_hero.nav_links') %>">
+          <% heroLinks.forEach(function(link) { 
+               var isExternal = /^(?:https?:)?\/\//i.test(link.link);
+               var linkAlt = link.alt || link.name;
+          %>
+            <a href="<%= flatpaper_safe_url(url_for(link.link), 'href') %>" class="home-hero__nav-link" title="<%= linkAlt %>" aria-label="<%= linkAlt %>" <%- isExternal ? 'target="_blank" rel="noopener"' : '' %>>
+              <span><%= link.name %></span>
+            </a>
+          <% }) %>
+        </nav>
+      <% } else { %>
+        <div class="home-hero__divider" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="12" viewBox="0 0 56 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6c3.5-3.5 6.5-3.5 10 0s6.5 3.5 10 0 6.5-3.5 10 0 6.5 3.5 10 0 6.5-3.5 10 0" />
+          </svg>
+        </div>
+      <% } %>
       <div class="socials home-hero__links" aria-label="<%= flatpaper_i18n('home_hero.profile_links') %>">
         <% Object.keys(socials).forEach(function(name) {
           var raw = socials[name];
@@ -211,7 +251,15 @@ var hasLinkedCustomStickers = customStickerItems.some(function (item) { return !
       </div>
     </div>
   </div>
-  <a class="home-hero__arrow" href="<%= ctaHref %>" data-hero-scroll aria-label="<%= enterLabel %>" title="<%= enterLabel %>">
-    <%- partial('_partial/icons', { icon: 'chevron-down' }) %>
+  <a
+    class="home-hero__arrow"
+    href="<%= ctaHref %>"
+    data-hero-scroll
+    <% if (ctaBgImages.length > 1) { %>data-hero-cta-backgrounds="<%= JSON.stringify(ctaBgImages) %>"<% } %>
+    style="--hero-cta-bg: url(&quot;<%= ctaBgImageCss %>&quot;);"
+    aria-label="<%= ctaText %>"
+    title="<%= ctaText %>"
+  >
+    <span class="home-hero__arrow-text"><%= ctaText %></span>
   </a>
 </section>
