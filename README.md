@@ -11,7 +11,6 @@
 | 分类 | 说明 |
 | --- | --- |
 | **life** | 新加坡生活省钱攻略：会员权益、信用卡、投资理财等 |
-| **tech** | 工具导航与站点维护指南 |
 
 ### 已发布文章
 
@@ -21,8 +20,6 @@
 | 2026-06-25 | [Trust Card 评测：新加坡最省心的信用卡推荐](https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/) | life |
 | 2026-06-24 | [Endowus 评测：在新加坡用 CPF、SRS 和现金低成本投资](https://sadougu.github.io/2026/06/24/Endowus评测：新加坡低成本投资CPF与SRS/) | life |
 | 2026-06-23 | [新加坡 NTUC 工会会员：一年 $117，到底值不值？](https://sadougu.github.io/2026/06/23/新加坡NTUC工会会员值不值得办/) | life |
-| 2026-06-22 | [常用 AI 平台与工具快捷导航](https://sadougu.github.io/2026/06/22/常用-AI-平台与工具快捷导航/) | tech |
-| 2026-06-22 | [如何在 Hexo 中发表新文章](https://sadougu.github.io/2026/06/21/如何在-Hexo-中发表新文章/) | tech |
 
 ## 技术栈
 
