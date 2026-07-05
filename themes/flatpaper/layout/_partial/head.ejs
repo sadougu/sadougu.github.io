@@ -82,7 +82,7 @@ function resolveDescription() {
     return truncateText(listDescription(archiveLabel, posts), 180);
   }
   if (is_home()) {
-    return truncateText(posts.length ? listDescription(siteTitle, posts) : siteDescription, 180);
+    return truncateText(siteDescription || (posts.length ? listDescription(siteTitle, posts) : ''), 180);
   }
   return truncateText(page.excerpt || page.content || siteDescription, 180);
 }

@@ -39,7 +39,7 @@ background:
 
 profile:
   role: 省钱速报
-  bio: 专注新加坡本地省钱资讯，会员权益与生活优惠一网打尽。
+  bio: 专注新加坡本地省钱资讯，会员权益、消费返现与生活优惠攻略。
   # 头像图片路径（站点根的 source/ 目录下）。留空则使用 CSS 绘制的默认头像。
   avatar:
   # 头像图片形状：square（默认，原始方形）或 circle（应用圆形遮罩）
@@ -84,8 +84,8 @@ profile:
 
 welcome:
   label: 今日份记录
-  title: Welcome
-  text: 基于 Hexo 与 FlatPaper 主题构建的个人网站。
+  title: 新加坡省钱速报
+  text: 专注新加坡本地省钱资讯，会员权益、消费返现与生活优惠攻略。信用卡、理财、会员权益深度评测。
   cta_text: 开始阅读
   cta_link: archives/
   # 自定义封面图。留空则使用 CSS 绘制的山景默认图。
@@ -213,9 +213,9 @@ tape:
 # - left 支持 HTML；占位符：{year}=当前年份，{name}=站点 _config.yml 的 author
 # - powered 负责主题署名；设为 false 或配置 enable: false 可关闭
 footer:
-  left: '© {year} By {name}'
+  left: '© {year} {name}'
   powered:
-    enable: true
+    enable: false
     prefix: Powered by Theme
     name: FlatPaper
     link: https://github.com/Homulilly/hexo-theme-flatpaper

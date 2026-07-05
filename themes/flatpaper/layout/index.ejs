@@ -21,7 +21,14 @@ if (isFirstPage && theme.featured && theme.featured.length) {
 }
 var autoplay = (typeof theme.featured_autoplay === 'number') ? theme.featured_autoplay : 5000;
 var featuredImageZigzag = theme.featured_image_zigzag !== false;
+var siteIntro = config.description || '';
 %>
+
+<% if (isFirstPage && siteIntro) { %>
+  <section class="site-intro" aria-label="站点简介">
+    <p><%= siteIntro %></p>
+  </section>
+<% } %>
 
 <% if (featured.length) { %>
   <section

@@ -2,7 +2,7 @@
 // The post index lives in a standalone JSON file emitted by
 // scripts/search-index.js; main.js fetches it lazily when the panel opens.
 %>
-<div class="search-panel" aria-hidden="true" data-index-url="<%= url_for('flatpaper-search.json') %>">
+<div class="search-panel" aria-hidden="true" data-nosnippet data-index-url="<%= url_for('flatpaper-search.json') %>">
   <div class="search-backdrop js-search-close"></div>
   <section class="search-dialog" role="dialog" aria-modal="true" aria-label="<%= flatpaper_i18n('common.search_posts') %>">
     <span class="tape tape--top-left" aria-hidden="true"></span>

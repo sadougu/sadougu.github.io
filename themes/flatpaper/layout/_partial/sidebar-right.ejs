@@ -126,7 +126,7 @@ var menuChildren = __menu.children, menuHref = __menu.href, menuIcon = __menu.ic
         <span></span><i></i><em></em><b></b>
       </div>
     <% } %>
-    <h3><%= config.author || 'FlatPaper' %></h3>
+    <h3><%= config.title || config.author || 'FlatPaper' %></h3>
     <% if (profile.role) { %><p class="profile-role"><%= profile.role %></p><% } %>
     <p><%= profile.bio || flatpaper_i18n('profile.default_bio') %></p>
     <% if (siteInfoItems.length) { %>

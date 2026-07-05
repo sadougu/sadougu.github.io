@@ -89,7 +89,7 @@ normalizeLinkRows(f.links).map(renderLinkRow).filter(Boolean).forEach(function (
   rightRows.push(row);
 });
 %>
-<footer class="site-footer">
+<footer class="site-footer" data-nosnippet>
   <span class="site-footer__left"><%- left %></span>
   <% if (rightRows.length) { %>
     <span class="site-footer__right">
