@@ -183,5 +183,9 @@ if (['orange', 'purple', 'sakura', 'blue', 'pink', 'green', 'black'].indexOf(acc
     } catch (e) {}
   })();
 </script>
+<link rel="preload" href="<%- url_for('css/style.css') %>" as="style">
 <%- css('css/style') %>
+<% if (is_home() && (!page.current || page.current === 1)) { %>
+<link rel="preload" as="image" href="<%- url_for('/images/cover/camera.webp') %>" fetchpriority="high">
+<% } %>
 <%- partial('_partial/google-fonts') %>

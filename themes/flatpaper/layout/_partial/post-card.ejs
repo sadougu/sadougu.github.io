@@ -7,7 +7,7 @@ if (summary.length > max) summary = summary.slice(0, max) + '...';
 %>
 <article class="post-card" data-title="<%= post.title %>">
   <a class="post-thumb-link" href="<%- url_for(post.path) %>" aria-label="<%= post.title %>">
-    <%- partial('_partial/thumbnail', { index: index, post: post }) %>
+    <%- partial('_partial/thumbnail', { index: index, post: post, priority: index < 2 }) %>
   </a>
   <div class="post-card-copy">
     <h3><a href="<%- url_for(post.path) %>"><%= post.title %></a></h3>

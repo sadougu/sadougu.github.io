@@ -317,15 +317,27 @@ fancybox:
 # bottom：每个条目原样输出到 </body> 之前
 # 条目为完整 HTML 字符串（<link> / <script> / <style> 等均可）
 inject:
-  head:
-    - |
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VF8SSPQSM"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0VF8SSPQSM');
-      </script>
+  head: []
   bottom:
-    # - <script src="/js/xxx.js" defer></script>
+    - |
+      <!-- Google tag (gtag.js) — loads on first user interaction to avoid blocking paint -->
+      <script>
+        (function () {
+          var loaded = false;
+          function loadGtag() {
+            if (loaded) return;
+            loaded = true;
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0VF8SSPQSM';
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0VF8SSPQSM');
+          }
+          ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
+            window.addEventListener(evt, loadGtag, { once: true, passive: true });
+          });
+        })();
+      </script>

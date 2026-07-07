@@ -23,11 +23,19 @@ if (typeof post !== 'undefined' && post) {
   thumbAlt = post.title || '';
 }
 thumbSrc = cover ? cover.src : flatpaper_safe_url(url_for(fallbackCover), 'image');
+// On homepage listings, avoid slow third-party cover images in post cards.
+if (is_home() && cover && cover.raw && /^https?:\/\//i.test(cover.raw)) {
+  thumbSrc = flatpaper_safe_url(url_for(fallbackCover), 'image');
+  cover.isFallback = true;
+}
 if (thumbSrc) classes.push('paper-thumb--cover');
+var isPriority = typeof priority !== 'undefined' && priority;
+var isHomeFirstPage = is_home() && (!page.current || page.current === 1);
+var imgLoading = (isPriority || isHomeFirstPage) ? 'eager' : 'lazy';
 %>
 <div class="<%= classes.join(' ') %>">
   <% if (thumbSrc) { %>
-    <img class="paper-thumb__img" src="<%= thumbSrc %>" alt="<%= cover && !cover.isFallback ? thumbAlt : '' %>" loading="lazy" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="<%= thumbSrc %>" alt="<%= cover && !cover.isFallback ? thumbAlt : '' %>" loading="<%= imgLoading %>"<% if (isPriority) { %> fetchpriority="high"<% } %> decoding="async" referrerpolicy="no-referrer">
   <% } else { %>
     <div class="sun"></div>
     <div class="cloud cloud-a"></div>

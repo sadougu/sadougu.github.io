@@ -85,7 +85,21 @@ if (['default', 'grid', 'line', 'cross', 'dotted'].indexOf(backgroundStyle) === 
   <script>
   window.FLATPAPER_I18N = <%- flatpaper_i18n_json() %>;
   </script>
-  <%- js('js/main') %>
+  <script>
+  (function () {
+    function loadMain() {
+      var s = document.createElement('script');
+      s.src = '<%- url_for('js/main.js') %>';
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadMain, { timeout: 2500 });
+    } else {
+      window.addEventListener('DOMContentLoaded', loadMain);
+    }
+  })();
+  </script>
   <% (theme.inject && Array.isArray(theme.inject.bottom) ? theme.inject.bottom : []).forEach(function(snippet) { if (snippet) { %>
   <%- snippet %>
   <% } }) %>

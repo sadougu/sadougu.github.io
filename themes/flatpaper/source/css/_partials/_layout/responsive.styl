@@ -456,6 +456,24 @@
   }
 }
 
+@media (max-width: 768px) {
+  /* feTurbulence paper-edge filters are costly on mobile — drop for faster paint */
+  .site-header,
+  .paper-shell,
+  .paper-sidebar,
+  .side-card,
+  .post-card::before,
+  .post-thumb-link .paper-thumb,
+  .search-dialog,
+  .site-footer {
+    filter: none !important;
+  }
+
+  .page-grain {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .post-list {
     grid-template-columns: minmax(0, 1fr);
