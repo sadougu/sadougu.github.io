@@ -9,7 +9,7 @@ tags:
   - 理财
 categories:
   - life
-cover: https://static.tigerbbs.com/2ea9e7785a4b0828aa07e3ecb573f345
+cover: /images/covers/tiger.webp
 ---
 
 在新加坡想投资美股、港股或本地股，开两三个券商账户、来回转账对账，确实挺烦。老虎证券（Tiger Brokers）的 **Tiger Trade** App 把这件事简化了——**一个账户打通多个市场，佣金在业内算低，开户还能用 Singpass 秒批**。如果你正在找一款适合日常使用的投资 App，这篇帮你把老虎摸清楚。

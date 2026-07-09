@@ -9,7 +9,7 @@ tags:
   - 生活指南
 categories:
   - life
-cover: https://wise.com/public-resources/assets/spend/card-asset/large/v2/personal_green_wise_2023@1x.png
+cover: /images/covers/wise.webp
 ---
 
 在新加坡生活，钱往往不止一种货币：工资是 SGD，投资账户是 USD，回国要给家人汇 CNY，出国旅游还要刷当地币。传统银行换汇？手续费藏在水面下，汇率还常常比 Google 报价差一截。

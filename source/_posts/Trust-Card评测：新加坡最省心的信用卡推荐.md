@@ -9,7 +9,7 @@ tags:
   - 生活指南
 categories:
   - life
-cover: https://trustbank.sg/_next/static/images/CC_Hero%20Banner-updated-44e6cd72ee0ea742e812664b6c87d95d.webp
+cover: /images/covers/trust.webp
 ---
 
 在新加坡办信用卡，最怕三件事：年费、海外手续费、返现规则绕到看不懂。Trust Bank 的信用卡把这三样基本都解决了——**零年费、零海外交易费、App 里实时看返现进度**。如果你常逛 FairPrice、偶尔出国，或者就是想要一张「办了不用操心」的日常卡，这篇帮你把 Trust Card 摸清楚。

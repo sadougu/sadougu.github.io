@@ -8,7 +8,7 @@ tags:
   - 生活指南
 categories:
   - life
-cover: https://alep-p-001.sitecorecontenthub.cloud/api/public/content/f495d1fbaeb34169ad64531b3dbc8819?v=8f0c7468&h=304&w=400&la=en
+cover: /images/covers/ntuc.webp
 ---
 
 在新加坡生活，你可能常听到 NTUC 这个名字——超市 FairPrice、保险 Income 都出自这个体系。但很多人不知道：**NTUC 工会会员**本身才是解锁返现、培训补贴和免费保险的那把钥匙。年费 $117，对常逛 FairPrice、愿意进修的人来说，往往第一年就回本。

@@ -8,7 +8,7 @@ tags:
   - 理财
 categories:
   - life
-cover: https://cdn.growbeansprout.com/strapi-uploads/Endowus_Review_Cover_Page_21_Jan_2025_6bf0d53855.jpg
+cover: /images/covers/endowus.webp
 ---
 
 在新加坡想投资，但不想天天盯盘、也不想被高额销售佣金「割」？**Endowus** 是本地少数能同时打理 **现金、CPF 普通户（OA）、SRS** 的数字财富平台，受新加坡金管局（MAS）监管。综合 [SingSaver](https://www.singsaver.com.sg/investment/blog/endowus-review-singapore)、[GrowBeansprout](https://growbeansprout.com/endowus-review) 等近期评测，它最适合「长期持有、省心定投」的人——而不是短线炒股的选手。

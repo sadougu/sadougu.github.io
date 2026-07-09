@@ -29,13 +29,13 @@ if (is_home() && cover && cover.raw && /^https?:\/\//i.test(cover.raw)) {
   cover.isFallback = true;
 }
 if (thumbSrc) classes.push('paper-thumb--cover');
+// Only the LCP candidate should be eager + high priority; everything else lazy.
 var isPriority = typeof priority !== 'undefined' && priority;
-var isHomeFirstPage = is_home() && (!page.current || page.current === 1);
-var imgLoading = (isPriority || isHomeFirstPage) ? 'eager' : 'lazy';
+var imgLoading = isPriority ? 'eager' : 'lazy';
 %>
 <div class="<%= classes.join(' ') %>">
   <% if (thumbSrc) { %>
-    <img class="paper-thumb__img" src="<%= thumbSrc %>" alt="<%= cover && !cover.isFallback ? thumbAlt : '' %>" loading="<%= imgLoading %>"<% if (isPriority) { %> fetchpriority="high"<% } %> decoding="async" referrerpolicy="no-referrer">
+    <img class="paper-thumb__img" src="<%= thumbSrc %>" alt="<%= cover && !cover.isFallback ? thumbAlt : '' %>" width="640" height="360" loading="<%= imgLoading %>"<% if (isPriority) { %> fetchpriority="high"<% } %> decoding="async" referrerpolicy="no-referrer">
   <% } else { %>
     <div class="sun"></div>
     <div class="cloud cloud-a"></div>

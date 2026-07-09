@@ -185,7 +185,18 @@ if (['orange', 'purple', 'sakura', 'blue', 'pink', 'green', 'black'].indexOf(acc
 </script>
 <link rel="preload" href="<%- url_for('css/style.css') %>" as="style">
 <%- css('css/style') %>
-<% if (is_home() && (!page.current || page.current === 1)) { %>
-<link rel="preload" as="image" href="<%- url_for('/images/cover/camera.webp') %>" fetchpriority="high">
+<% if (is_home() && (!page.current || page.current === 1)) {
+  // Preload the first post-card cover (LCP candidate). Prefer local covers;
+  // external third-party images are swapped for theme fallbacks on the homepage.
+  var homePosts = page.posts && typeof page.posts.toArray === 'function' ? page.posts.toArray() : [];
+  var lcpPost = homePosts[0];
+  var lcpFallback = '/images/cover/camera.webp';
+  var lcpCover = flatpaper_cover_info(lcpPost, lcpFallback);
+  var lcpHref = lcpCover && lcpCover.src ? lcpCover.src : url_for(lcpFallback);
+  if (lcpCover && lcpCover.raw && /^https?:\/\//i.test(lcpCover.raw)) {
+    lcpHref = flatpaper_safe_url(url_for(lcpFallback), 'image') || url_for(lcpFallback);
+  }
+%>
+<link rel="preload" as="image" href="<%= lcpHref %>" fetchpriority="high">
 <% } %>
 <%- partial('_partial/google-fonts') %>

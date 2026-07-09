@@ -9,7 +9,7 @@ tags:
   - 理财
 categories:
   - life
-cover: https://cdn.futustatic.com/official_global_website/moomoo/assets/global-stocks-5d4de6fe.png
+cover: /images/covers/moomoo.webp
 ---
 
 在新加坡选投资 App，很多人会在 Moomoo（富途牛牛）和老虎证券之间纠结。Moomoo 在新加坡的用户基数很大——官方称超过 **150 万本地用户**，SGX 集团成员、纳斯达克战略合作伙伴。如果你看重**零佣金、免费深度行情、活跃投资社区**，Moomoo 值得认真考虑。
