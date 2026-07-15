@@ -1,31 +1,39 @@
 ---
 title: 关于本站
 date: 2026-06-22 00:00:00
+updated: 2026-07-15 12:00:00
 ---
 
 **新加坡省钱速报** —— 在新加坡，把钱省明白。
 
-本站专注新加坡本地生活省钱攻略：会员权益怎么回本、信用卡和券商怎么选、CPF/SRS 怎么配置更划算。不堆术语，用表格和实测帮你快速做决定。
+本站专注新加坡本地生活省钱攻略：会员权益怎么回本、信用卡和券商怎么选、多币种账户与政府补贴怎么用、CPF/SRS 怎么配置更划算。不堆术语，用表格和实测帮你快速做决定。
 
 ## 写什么
 
-| 分类 | 内容方向 |
+| 方向 | 内容举例 |
 | --- | --- |
-| **生活省钱** | NTUC 会员、超市返现、信用卡、日常消费优惠 |
-| **投资理财** | 券商开户、基金平台、CPF/SRS 配置思路 |
+| **生活省钱** | NTUC 会员、超市返现、日常消费优惠、政府补贴（如 LifeSG Credits） |
+| **信用卡** | Trust、Citi、比价站（SingSaver / MoneySmart）怎么选 |
+| **投资理财** | 券商开户（Moomoo、Tiger）、基金平台（Endowus）、CPF/SRS |
+| **跨境资金** | Wise 多币种账户、Interest 收益、换汇与日常支付 |
 
 每篇文章都尽量回答三个问题：**值不值得办？适合谁？有没有坑？**
 
 ## 已写的内容
 
-- [SingSaver vs MoneySmart 信用卡比价网站怎么选](/2026/06/29/SingSaver-vs-MoneySmart：新加坡信用卡比价网站怎么选/)
+按发布时间倒序：
+
+- [LifeSG Child Credits：S$500 怎么打进 ShopeePay](/2026/07/15/LifeSG-Child-Credits-ShopeePay指南：500新币怎么打进ShopeePay/)
+- [Citi 信用卡评测：Cash Back、SMRT 与最值得办的几张卡](/2026/07/12/Citi新加坡信用卡评测：Cash-Back、SMRT与最值得办的几张卡/)
+- [Wise 评测：多币种账户 + Interest 收益](/2026/07/04/Wise评测：多币种账户与Interest收益账户推荐/)
+- [SingSaver vs MoneySmart：信用卡比价网站怎么选](/2026/06/29/SingSaver-vs-MoneySmart：新加坡信用卡比价网站怎么选/)
 - [Moomoo 富途牛牛投资平台评测](/2026/06/28/Moomoo评测：富途牛牛新加坡投资平台推荐/)
 - [Tiger Trade 投资平台评测](/2026/06/26/Tiger-Trade评测：一个账户投资全球，我为什么推荐老虎证券/)
 - [Trust Card 信用卡评测](/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/)
 - [Endowus CPF/SRS 投资评测](/2026/06/24/Endowus评测：新加坡低成本投资CPF与SRS/)
 - [NTUC 工会会员值不值得办](/2026/06/23/新加坡NTUC工会会员值不值得办/)
 
-更多文章见 [归档](/archives/)。
+更多文章见 [归档](/archives/)，也可按 [标签](/tags/) 浏览。
 
 ## 关于作者
 
