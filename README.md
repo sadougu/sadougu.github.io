@@ -16,10 +16,13 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
+| 2026-07-15 | [LifeSG Child Credits 指南：S$500 儿童补贴怎么打进 ShopeePay](https://sadougu.github.io/2026/07/15/LifeSG-Child-Credits-ShopeePay指南：500新币怎么打进ShopeePay/) | life |
+| 2026-07-12 | [Citi 新加坡信用卡评测：Cash Back、SMRT 与最值得办的几张卡](https://sadougu.github.io/2026/07/12/Citi新加坡信用卡评测：Cash-Back、SMRT与最值得办的几张卡/) | life |
+| 2026-07-04 | [Wise 评测：多币种账户 + Interest 收益，新加坡华人怎么用最划算](https://sadougu.github.io/2026/07/04/Wise评测：多币种账户与Interest收益账户推荐/) | life |
 | 2026-06-29 | [SingSaver vs MoneySmart：新加坡信用卡比价网站怎么选？](https://sadougu.github.io/2026/06/29/SingSaver-vs-MoneySmart：新加坡信用卡比价网站怎么选/) | life |
 | 2026-06-28 | [Moomoo 评测：富途牛牛在新加坡，我为什么推荐它](https://sadougu.github.io/2026/06/28/Moomoo评测：富途牛牛新加坡投资平台推荐/) | life |
 | 2026-06-26 | [Tiger Trade 评测：一个账户投资全球，我为什么推荐老虎证券](https://sadougu.github.io/2026/06/26/Tiger-Trade评测：一个账户投资全球，我为什么推荐老虎证券/) | life |
-| 2026-06-25 | [Trust Card 评测：新加坡最省心的信用卡推荐](https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/) | life |
+| 2026-06-25 | [Trust Card 评测：新加坡最省心的信用卡，我为什么推荐它](https://sadougu.github.io/2026/06/25/Trust-Card评测：新加坡最省心的信用卡推荐/) | life |
 | 2026-06-24 | [Endowus 评测：在新加坡用 CPF、SRS 和现金低成本投资](https://sadougu.github.io/2026/06/24/Endowus评测：新加坡低成本投资CPF与SRS/) | life |
 | 2026-06-23 | [新加坡 NTUC 工会会员：一年 $117，到底值不值？](https://sadougu.github.io/2026/06/23/新加坡NTUC工会会员值不值得办/) | life |
 
@@ -75,13 +78,13 @@ Grok 会自动执行以下步骤：
 ```markdown
 ---
 title: 文章标题
-date: 2026-06-26 10:00:00
+date: 2026-07-15 10:00:00
 tags:
   - 标签1
   - 新加坡
 categories:
   - life
-cover: https://example.com/cover.jpg
+cover: /images/covers/example.webp
 ---
 
 摘要段落，显示在首页。
@@ -91,12 +94,16 @@ cover: https://example.com/cover.jpg
 正文从这里开始……
 ```
 
+首页文章卡片会优先使用 front-matter 里的 **本地封面**（推荐放在 `source/images/covers/`，WebP、约 640×360、尽量小于 40KB）。外链封面在主页会被主题替换为本地回退图，以免拖慢移动端 Lighthouse。
+
 ### 注意事项
 
 - `public/` 目录已 gitignore，**不要手动提交**，由 GitHub Actions 构建生成
 - 站点主题配置在 `_config.flatpaper.yml`，Hexo 配置在 `_config.yml`
+- 本地封面放在 `source/images/covers/`，会随站点一起发布
 - 推送 `main` 后约 1–2 分钟生效
 - 如果 push 被拒（邮箱隐私限制），需将 git `user.email` 改为 `用户名@users.noreply.github.com`
+- 性能自检：`npm run test:performance`
 
 ### 手动发帖（不用 Grok 时）
 
@@ -130,12 +137,16 @@ npm run build
 
 ```
 ├── source/
-│   ├── _posts/          # 博客文章
-│   └── about/           # 关于页面
-├── themes/flatpaper/    # FlatPaper 主题
-├── _config.yml          # Hexo 站点配置
+│   ├── _posts/            # 博客文章
+│   ├── images/covers/     # 文章题图（本地 WebP，供首页卡片使用）
+│   ├── about/             # 关于页面
+│   ├── categories/        # 分类页
+│   └── tags/              # 标签页
+├── themes/flatpaper/      # FlatPaper 主题
+├── test/                  # 首页性能结构校验等
+├── _config.yml            # Hexo 站点配置
 ├── _config.flatpaper.yml  # 主题个性化配置
-├── .github/workflows/   # GitHub Actions 部署流程
+├── .github/workflows/     # GitHub Actions 部署流程
 └── package.json
 ```
 
