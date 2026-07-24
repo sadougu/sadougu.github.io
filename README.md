@@ -16,6 +16,7 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
+| 2026-07-25 | [MariBank 评测：2.88% 利息促销怎么拿，Mari Savings 新户值不值得开](https://sadougu.github.io/2026/07/25/MariBank评测：2.88利息促销与Mari-Savings新户怎么开/) | life |
 | 2026-07-15 | [LifeSG Child Credits 指南：S$500 儿童补贴怎么打进 ShopeePay](https://sadougu.github.io/2026/07/15/LifeSG-Child-Credits-ShopeePay指南：500新币怎么打进ShopeePay/) | life |
 | 2026-07-12 | [Citi 新加坡信用卡评测：Cash Back、SMRT 与最值得办的几张卡](https://sadougu.github.io/2026/07/12/Citi新加坡信用卡评测：Cash-Back、SMRT与最值得办的几张卡/) | life |
 | 2026-07-04 | [Wise 评测：多币种账户 + Interest 收益，新加坡华人怎么用最划算](https://sadougu.github.io/2026/07/04/Wise评测：多币种账户与Interest收益账户推荐/) | life |

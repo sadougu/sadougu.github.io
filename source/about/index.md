@@ -1,7 +1,7 @@
 ---
 title: 关于本站
 date: 2026-06-22 00:00:00
-updated: 2026-07-15 12:00:00
+updated: 2026-07-25 12:00:00
 ---
 
 **新加坡省钱速报** —— 在新加坡，把钱省明白。
@@ -12,7 +12,7 @@ updated: 2026-07-15 12:00:00
 
 | 方向 | 内容举例 |
 | --- | --- |
-| **生活省钱** | NTUC 会员、超市返现、日常消费优惠、政府补贴（如 LifeSG Credits） |
+| **生活省钱** | NTUC 会员、超市返现、数字银行高息户（如 MariBank）、政府补贴（如 LifeSG Credits） |
 | **信用卡** | Trust、Citi、比价站（SingSaver / MoneySmart）怎么选 |
 | **投资理财** | 券商开户（Moomoo、Tiger）、基金平台（Endowus）、CPF/SRS |
 | **跨境资金** | Wise 多币种账户、Interest 收益、换汇与日常支付 |
@@ -23,6 +23,7 @@ updated: 2026-07-15 12:00:00
 
 按发布时间倒序：
 
+- [MariBank 评测：2.88% 利息促销与 Mari Savings 新户](/2026/07/25/MariBank评测：2.88利息促销与Mari-Savings新户怎么开/)
 - [LifeSG Child Credits：S$500 怎么打进 ShopeePay](/2026/07/15/LifeSG-Child-Credits-ShopeePay指南：500新币怎么打进ShopeePay/)
 - [Citi 信用卡评测：Cash Back、SMRT 与最值得办的几张卡](/2026/07/12/Citi新加坡信用卡评测：Cash-Back、SMRT与最值得办的几张卡/)
 - [Wise 评测：多币种账户 + Interest 收益](/2026/07/04/Wise评测：多币种账户与Interest收益账户推荐/)
