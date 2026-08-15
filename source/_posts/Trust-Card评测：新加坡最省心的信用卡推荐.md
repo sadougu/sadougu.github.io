@@ -14,6 +14,8 @@ cover: /images/covers/trust.webp
 
 在新加坡办信用卡，最怕三件事：年费、海外手续费、返现规则绕到看不懂。Trust Bank 的信用卡把这三样基本都解决了——**零年费、零海外交易费、App 里实时看返现进度**。如果你常逛 FairPrice、偶尔出国，或者就是想要一张「办了不用操心」的日常卡，这篇帮你把 Trust Card 摸清楚。
 
+> **2026 年 8 月更新**：原 **Cashback 卡**已改名为 **Trust Freedom**，每季可在 **3% Stockback**、**1.5% 无限返现**和原来的自选类别 Bonus 之间切换。细则、坑和邀请码见新文 [Trust Freedom 评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/)。下面关于 Link 卡的部分仍然适用。
+
 <!-- more -->
 
 ![Trust 信用卡](https://trustbank.sg/_next/static/images/CC_Hero%20Banner-updated-44e6cd72ee0ea742e812664b6c87d95d.webp)
@@ -24,7 +26,7 @@ cover: /images/covers/trust.webp
 | --- | --- |
 | 常逛 FairPrice / Kopitiam / Unity，已是 NTUC 工会会员 | **NTUC Link 信用卡**，FairPrice 系最高约 **21%** 回馈 |
 | 常逛 FairPrice，但不是工会会员 | **Trust Link 信用卡**，FairPrice 系最高约 **15%** 回馈 |
-| 消费分散，不想算最低消费门槛 | **Trust Cashback 信用卡**，本地 **1%** 无上限、海外 **0.5%** 无上限 |
+| 消费分散，不想算最低消费门槛 | **Trust Freedom**（原 Cashback），本地无限返现现为 **1.5%**；年底前出国可切 **3% Stockback** |
 | 经常出国旅游或出差 | 两张都合适——**零外汇手续费**，汇率接近 Google 报价 |
 | 只想薅开户羊毛 | 用文末邀请码，**保底 $5 返现，最高 $1,000** |
 
@@ -38,14 +40,16 @@ cover: /images/covers/trust.webp
 
 Trust 目前有两张主力信用卡，别搞混：
 
-| | **Link 信用卡** | **Cashback 信用卡** |
+| | **Link 信用卡** | **Freedom**（原 Cashback） |
 | --- | --- | --- |
-| 返现形式 | LinkPoints（100 分 = $1） | 直接现金返现 |
-| FairPrice 系最高回馈 | NTUC 会员 **21%** / 非会员 **15%** | 自选类别每季 **15%**（上限 $250/季） |
-| 其他本地消费 | 约 **0.22%** LinkPoints | **1%** 无上限 |
-| 海外消费 | 约 **0.22%** LinkPoints | **0.5%** 无上限 |
+| 返现形式 | LinkPoints（100 分 = $1） | 现金，或 Stockback 碎股 |
+| FairPrice 系最高回馈 | NTUC 会员 **21%** / 非会员 **15%** | 不是主场；自选类别 Bonus 另算 |
+| 其他本地消费 | 约 **0.22%** LinkPoints | 无限返现档 **1.5%** 无上限 |
+| 海外消费 | 约 **0.22%** LinkPoints | 现金档 **0.5%**；促销期 Stockback 可达 **3%** |
 | Caltex 加油 | 最高 **20%** 折扣 | 合作商户额外优惠 |
-| 适合谁 | FairPrice 重度用户 | 消费场景分散、懒得算门槛的人 |
+| 适合谁 | FairPrice 重度用户 | 消费分散、出国、想试碎股回馈 |
+
+> Freedom 的三种模式、15% 为什么拿不满、迎新金刮卡，见 [Trust Freedom 评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/)。
 
 > **Link 卡的核心逻辑**：在 FairPrice 系消费越高，越要把「非 FairPrice 消费」也刷够——这样才能解锁月度 / 季度加成。App 里有进度条，不用自己记账。NTUC 工会会员门槛更低、回馈更高，具体可看我另一篇 [NTUC 工会会员评测](/2026/06/23/新加坡NTUC工会会员值不值得办/)。
 
