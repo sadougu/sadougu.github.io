@@ -1,5 +1,5 @@
 ---
-title: Trust Card 评测：新加坡最省心的信用卡，我为什么推荐它
+title: Trust Link 信用卡评测：FairPrice 回馈、费用和申请条件
 date: 2026-06-25 10:00:00
 tags:
   - Trust
@@ -12,163 +12,77 @@ categories:
 cover: /images/covers/trust.webp
 ---
 
-在新加坡办信用卡，最怕三件事：年费、海外手续费、返现规则绕到看不懂。Trust Bank 的信用卡把这三样基本都解决了——**零年费、零海外交易费、App 里实时看返现进度**。如果你常逛 FairPrice、偶尔出国，或者就是想要一张「办了不用操心」的日常卡，这篇帮你把 Trust Card 摸清楚。
+常在 FairPrice、Kopitiam、Unity 消费，可以先看 Trust Link 信用卡。它免年费和海外交易费，以 LinkPoints 回馈消费。NTUC 工会会员最高回馈约 21%，非会员约 15%，但都需要满足消费门槛，不能把最高比例套在所有支出上。
 
-> **2026 年 8 月更新**：原 **Cashback 卡**已改名为 **Trust Freedom**，每季可在 **3% Stockback**、**1.5% 无限返现**和原来的自选类别 Bonus 之间切换。细则、坑和邀请码见新文 [Trust Freedom 评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/)。下面关于 Link 卡的部分仍然适用。
+> 2026 年 8 月更新：原 Cashback 卡已更名为 Trust Freedom，每季可选 Stockback、无限返现或自选类别 Bonus。本文重点介绍 Link 卡，Freedom 的规则见 [单独评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/)。
 
 <!-- more -->
 
 ![Trust 信用卡](https://trustbank.sg/_next/static/images/CC_Hero%20Banner-updated-44e6cd72ee0ea742e812664b6c87d95d.webp)
 
-## 一句话结论
+## Trust Bank 和两类信用卡
 
-| 你的情况 | 推荐哪张 |
-| --- | --- |
-| 常逛 FairPrice / Kopitiam / Unity，已是 NTUC 工会会员 | **NTUC Link 信用卡**，FairPrice 系最高约 **21%** 回馈 |
-| 常逛 FairPrice，但不是工会会员 | **Trust Link 信用卡**，FairPrice 系最高约 **15%** 回馈 |
-| 消费分散，不想算最低消费门槛 | **Trust Freedom**（原 Cashback），本地无限返现现为 **1.5%**；年底前出国可切 **3% Stockback** |
-| 经常出国旅游或出差 | 两张都合适——**零外汇手续费**，汇率接近 Google 报价 |
-| 只想薅开户羊毛 | 用文末邀请码，**保底 $5 返现，最高 $1,000** |
+[Trust Bank](https://trustbank.sg/) 由渣打银行与 FairPrice Group 联合创办，持有新加坡银行牌照，受 MAS 监管。符合条件的存款受 SDIC 保障，每名储户最高 S$100,000；这项保障针对存款，不是信用卡回馈。
 
-## Trust Bank 是什么来头？
-
-[Trust Bank](https://trustbank.sg/) 是新加坡持牌数字银行，由 **渣打银行（Standard Chartered）** 和 **FairPrice Group** 联手创办，受新加坡金管局（MAS）监管。不是那种「只有 App、功能阉割」的虚拟银行——它有完整的银行牌照，存款还受 SDIC 保障（每名储户最高 **$100,000**）。
-
-信用卡申请全程在 App 里完成，批下来就能立刻用数字卡消费，实体卡随后寄到。对习惯手机办事的新加坡居民来说，体验比传统银行顺畅不少。
-
-## 两张卡怎么选？
-
-Trust 目前有两张主力信用卡，别搞混：
-
-| | **Link 信用卡** | **Freedom**（原 Cashback） |
+| 项目 | Link / NTUC Link | Freedom（原 Cashback） |
 | --- | --- | --- |
-| 返现形式 | LinkPoints（100 分 = $1） | 现金，或 Stockback 碎股 |
-| FairPrice 系最高回馈 | NTUC 会员 **21%** / 非会员 **15%** | 不是主场；自选类别 Bonus 另算 |
-| 其他本地消费 | 约 **0.22%** LinkPoints | 无限返现档 **1.5%** 无上限 |
-| 海外消费 | 约 **0.22%** LinkPoints | 现金档 **0.5%**；促销期 Stockback 可达 **3%** |
-| Caltex 加油 | 最高 **20%** 折扣 | 合作商户额外优惠 |
-| 适合谁 | FairPrice 重度用户 | 消费分散、出国、想试碎股回馈 |
+| 回馈形式 | LinkPoints，100 分抵 S$1 | 现金或美股 / ETF 碎股 |
+| FairPrice 系消费 | NTUC 会员最高约 21%，非会员约 15% | 按所选模式计回馈 |
+| 其他本地消费 | 基础回馈约 0.22% | 无限返现模式 1.5% |
+| 海外消费 | 基础回馈约 0.22% | 现金模式 0.5%；2026 年底前 Stockback 促销为 3% |
+| 年费、海外交易费 | S$0 | S$0 |
 
-> Freedom 的三种模式、15% 为什么拿不满、迎新金刮卡，见 [Trust Freedom 评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/)。
+买菜支出集中在 FairPrice 系，优先算 Link 的回馈；消费分散、希望直接拿现金，可比较 Freedom。两张卡也可同时持有，额度共用，一张账单还款。
 
-> **Link 卡的核心逻辑**：在 FairPrice 系消费越高，越要把「非 FairPrice 消费」也刷够——这样才能解锁月度 / 季度加成。App 里有进度条，不用自己记账。NTUC 工会会员门槛更低、回馈更高，具体可看我另一篇 [NTUC 工会会员评测](/2026/06/23/新加坡NTUC工会会员值不值得办/)。
+## 高回馈需要刷够哪些消费？
 
-## 六个让我真正动心的理由
+Link 卡的月度和季度加成，不只看 FairPrice 消费，也看非 FairPrice 消费。App 会显示达标进度，具体档位和上限需按当期条款确认。
 
-### 1. 海外消费零手续费，汇率还实在
-
-传统银行 Visa 卡出国刷，通常收 **3.25%–3.5%** 外汇转换费（含 Visa 的 1%）。Trust **不收任何海外交易费，也不加价汇率**，报价尽量贴近 Google 实时汇率。
-
-这意味着：去日本喝咖啡、在 Agoda 订酒店、曼谷路边摊刷卡，都不用提前换汇或往 YouTrip 里充钱。一张卡直接刷，比多币种钱包省心。
-
-### 2. 一张卡切换借记 / 信用模式
-
-如果你同时有 Trust 储蓄账户和信用卡，**同一张实体卡可以在 App 里一键切换**扣款来源——借记或信用。出国时还能在 Visa 支持的 ATM 取现（海外银行可能另收手续费，Trust 本身不收外汇费和取现费）。
-
-钱包少一张卡，少一层焦虑。
-
-### 3. FairPrice 系返现，目前市面上最能打
-
-新加坡物价不低，GST 已经 9%，日常买菜能省一点是一点。Link 卡在 FairPrice、Cheers、Unity、Kopitiam 等门店消费，配合月度 / 季度加成，NTUC 工会会员用信用卡最高可拿到约 **21%** 的 LinkPoints 回馈。
-
-对比其他超市神卡：
-
-| 卡片 | FairPrice 系最佳回馈 | 额外条件 |
+| 卡片 | FairPrice 系最高回馈 | 高档回馈的消费条件 |
 | --- | --- | --- |
-| Trust Link（NTUC 会员） | 最高 **21%** | 每月非 FPG 消费满 $350–$700 |
-| Trust Link（非会员） | 最高 **15%** | 每月非 FPG 消费满 $450–$700 |
-| UOB One | 约 **10%**（通过合作返现） | 月消费 $2,000 |
-| Citi SMRT | 约 **5%** | 每月 10 笔消费 |
-| Maybank Family & Friends | 约 **8%** | 月消费 $800，且杂货类上限 $25/月 |
+| Trust Link（NTUC 会员） | 约 21% | 每月非 FairPrice Group 消费 S$350–S$700，按档位计算 |
+| Trust Link（非会员） | 约 15% | 每月非 FairPrice Group 消费 S$450–S$700，按档位计算 |
+| UOB One | 约 10%，含合作回馈 | 对应月消费档位约 S$2,000 |
+| Citi SMRT | 约 5% | 需满足账单月消费门槛，见 [Citi 评测](/2026/07/12/Citi新加坡信用卡评测：Cash-Back、SMRT与最值得办的几张卡/) |
+| Maybank Family & Friends | 约 8% | 月消费 S$800，杂货类别上限约 S$25/月 |
 
-LinkPoints 可以当场抵扣结账，也能兑换 KrisFlyer 里程、AirAsia 积分等——不是锁死在超市里的「假返现」。
+这些是不同卡片各自的最高档，不能只按比例排名。要用自己的超市支出、其他消费和回馈上限算实际金额。
 
-### 4. 真正「免费」：年费、补卡费、取现费全免
+只在 FairPrice 买菜、其余消费刷别的卡，可能拿不到 Link 的高档回馈。若考虑为此加入 NTUC，也应先把 S$117 年费算进去，详见 [NTUC 工会会员评测](/2026/06/23/新加坡NTUC工会会员值不值得办/)。
 
-- 年费：**$0**
-- 海外交易费：**$0**
-- 现金透支费：**$0**
-- 补卡费：**$0**
+LinkPoints 可在合作商户抵扣，也有里程等兑换方式。它不等于直接入账的现金，兑换价值要看实际用途。
 
-2026 年 7 月 1 日起，利息会按信用行为个性化调整，区间约 **18.9%–29.9%** p.a.——但只要按时全额还款，这张卡对你来说就是零成本。
+## 海外刷卡和日常使用
 
-### 5. App 体验确实在线
+Trust 不收海外交易费，也不另加汇率价差，但结算仍依 Visa 汇率，不能保证每笔都等于 Google 报价。传统银行信用卡常见海外费用约 3.25%–3.5%，因此 Trust 可作为旅行消费用卡。
 
-几个细节加分：
+同时持有 Trust 储蓄账户和信用卡时，可在 App 切换实体卡的借记或信用扣款来源。海外 ATM 取现与刷卡消费是不同操作，别因免海外交易费就默认取现也免费：先核对取现模式、Trust 当前费用和当地银行收费。
 
-- **自选还款日**：新加坡第一张让你自己挑账单日的信用卡，可以配合发薪日还款
-- **实时消费通知**：出国刷卡立刻看到扣款，不怕盗刷
-- **一键锁卡**：卡丢了？App 里点一下冻结，补卡还免费
-- **Split Hub**：单笔 $50 以上可以分期免息还款
-- **附属卡**：纯数字申请，给家人用还能设消费上限，他们的消费计入你的月度最低消费
+App 提供消费通知、锁卡、还款日期设置和回馈进度。使用 Split Hub 分期或附属卡等功能前，需核对所持卡种的资格和条款；Freedom 暂不提供附属卡。
 
-### 6. 合作商户羊毛不断
+## 仍然要注意的费用和限制
 
-Trust App 的「Partner Offers」里常年有券：Starbucks 满 $10 减 $2、KFC 套餐折扣、Gojek 新用户首两单 15% off、Caltex 加油最高 20% off……配合 Stamp 集章活动，日常白嫖小优惠。
+- **按时全额还款。** 2026 年 7 月起，个性化年利率约 18.9%–29.9%。逾期还可能收 S$100 滞纳金，其他产品或分期情形另按条款处理。
+- **高回馈有上限。** 超出部分通常只按基础率计算，大额消费前先查可用额度。
+- **申请有收入和身份要求。** 公民、PR 常见年收入门槛为 S$30,000；年龄、工作准证和所选卡种可能影响资格。
+- **合作优惠会变。** App 的 Partner Offers 曾有 Starbucks 满 S$10 减 S$2、KFC 套餐、Gojek 首两单 15% 折扣和 Caltex 最高 20% 折扣，使用前确认日期及条件。
 
-## 需要注意的坑
+免年费和海外交易费，仍不代表分期、预借现金、逾期或其他操作都没有成本。
 
-天下没有完美信用卡，诚实说几个缺点：
+## 申请和邀请码
 
-| 缺点 | 影响 |
-| --- | --- |
-| Link 卡返现是 LinkPoints，不是现金 | 必须去合作商户花掉，不如 Cashback 卡直接入账 |
-| 高回馈要满足「非 FairPrice 消费」门槛 | 只买菜、不刷别的卡，拿不到 21% |
-| LinkPoints 各档有上限 | 大额消费会触顶，超出部分按基础率算 |
-| 最低年收入要求 $30,000 | 学生 / 准证持有者可能不符合 |
-| 逾期利息不低 | 晚还款 $100 滞纳金 + 高利息，务必设自动还款 |
+下载 Trust Bank SG App，点 Get started 后，在开户流程输入我的邀请码：
 
-## 适合谁办？
-
-**建议办：**
-
-- 每月在 FairPrice 系消费 $300 以上
-- 每年出国 1–2 次以上，不想付 3%+ 外汇费
-- 已经是 NTUC 工会会员（Link 卡收益最大化）
-- 想要零年费、规则相对透明的日常卡
-
-**可以观望：**
-
-- 几乎不逛 FairPrice、消费全在 Shopee / Grab
-- 懒得跟踪月度最低消费进度
-- 更喜欢现金返现而非积分体系 → 考虑 Cashback 卡
-
-## 怎么申请？用我的邀请码领保底 $5
-
-官方渠道：在 App Store 或 Google Play 搜索 **「Trust Bank SG」** 下载，全程约 5 分钟。
-
-**强烈建议用邀请码开户**——你和推荐人各得一张必中刮刮卡，保底 **$5** 返现，最高 **$1,000**，推荐次数无上限。
-
-我的邀请码：
-
-```
+```text
 5WJ6XEAD
 ```
 
-官方邀请说明原文：
+再按提示完成身份验证，选择要申请的卡。审核通过后可使用数字卡，实体卡随后寄送。
 
-> Hey 👋 Sign up for Trust with my referral code. You will get a sure-win scratch card that guarantees you a minimum cashback of S$5, up to S$1,000! Simply download the Trust Bank SG App on the App Store or Google Play Store. Tap on "Get started" immediately after you start the app and key in: **5WJ6XEAD**
->
-> Find out more on [Trust Bank SG website](https://trustbank.sg/refer-and-earn/). Terms and conditions apply.
+[官方推荐活动](https://trustbank.sg/refer-and-earn/) 曾标示必中刮刮卡最低 S$5、最高 S$1,000。信用卡迎新金刮卡是另一档活动，最新金额和截止日期见 [Freedom 评测](/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/) 及 [官方信用卡页面](https://trustbank.sg/credit-card/)。推荐码需在开户时填写，奖励按当期资格和活动条款发放。
 
-### 申请步骤（简版）
-
-1. 下载 Trust Bank SG App
-2. 点 **「Get started」**
-3. 输入邀请码 **`5WJ6XEAD`**
-4. 按提示完成身份验证，申请 Link 或 Cashback 信用卡
-5. 批卡后刮开 App 里的刮刮卡领返现
-
-另外，首次申请信用卡并完成首笔消费，还有机会参与官方抽奖（iPhone 17 Pro Max、Apple Watch 等），具体以 [Trust 官网活动条款](https://trustbank.sg/credit-card/) 为准。
-
-## 最后说两句
-
-Trust Card 不是「办卡就发财」的神器，而是一张**把隐形费用砍掉、把日常返现拉满**的实用卡。对在新加坡生活的华人来说，FairPrice 系购物 + 偶尔出国，基本覆盖了最高频的两类消费场景。
-
-如果你已经在考虑 NTUC 工会会员，两张一起办，超市回馈还能叠上去——性价比更高。
-
-有问题欢迎评论区聊。开户记得填 **`5WJ6XEAD`**，至少白捡 $5。
+Link 更适合日常本来就逛 FairPrice，且非 FairPrice 消费也能自然达标的人。若要为解锁高返而额外购物，省下的回馈通常抵不过新增支出。
 
 ---
 
-*免责声明：本文基于公开信息整理，不构成财务建议。信用卡权益与活动可能随时调整，请以 [Trust Bank 官网](https://trustbank.sg/) 最新条款为准。*
+本文按公开资料整理，不构成个人财务建议。回馈、费用和活动以 [Trust Bank 官网](https://trustbank.sg/) 的当前条款为准。文中含个人推荐码。
