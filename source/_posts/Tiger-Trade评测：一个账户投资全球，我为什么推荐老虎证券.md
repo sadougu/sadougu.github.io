@@ -16,6 +16,8 @@ Tiger Trade 是老虎证券的交易 App，可用一个账户投资美股、港�
 
 <!-- more -->
 
+> **2026 年 10 月 7 日更新**：最新邀请活动和邀请码 `GFL8GS` 见 [US$220 邀请活动说明](/2026/10/07/Tiger-Trade新活动：220美元邀请奖励与GFL8GS邀请码/)。下文旧活动仅保留当时的信息。
+
 ![Tiger Trade](https://static.tigerbbs.com/2ea9e7785a4b0828aa07e3ecb573f345)
 
 ## 平台背景
