@@ -16,7 +16,7 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
-| 2026-11-08 | [Muse 介绍：Meta 的个人 AI 助手在新加坡能做什么，附邀请码 7DND42](https://sadougu.github.io/2026/11/08/Muse介绍：Meta个人AI助手与邀请码7DND42/) | life |
+| 2026-11-08 | [Muse：新加坡能用的个人 AI 助手](https://sadougu.github.io/2026/11/08/Muse介绍：Meta个人AI助手与邀请码7DND42/) | life |
 | 2026-10-07 | [ShopeeVIP 推荐优惠：新会员免费 3 个月，附邀请链接](https://sadougu.github.io/2026/10/07/ShopeeVIP新会员优惠：免费3个月与推荐链接/) | life |
 | 2026-10-07 | [Tiger Trade 新活动：US$220 邀请奖励的条件，附邀请码 GFL8GS](https://sadougu.github.io/2026/10/07/Tiger-Trade新活动：220美元邀请奖励与GFL8GS邀请码/) | life |
 | 2026-08-15 | [Trust Freedom 评测：3% Stockback 与 1.5% 无限返现，Cashback 卡改名后怎么选](https://sadougu.github.io/2026/08/15/Trust-Freedom评测：Stockback与无限返现怎么选/) | life |
